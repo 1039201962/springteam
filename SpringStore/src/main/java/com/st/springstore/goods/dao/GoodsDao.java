@@ -24,16 +24,17 @@ public interface GoodsDao {
 	 */
 	List<Goods> findGoods(
 			@Param("title") String title,
+			@Param("categoryId") Integer categoryId,
 			@Param("orderBy") String orderBy,
 			@Param("isDesc") Integer isDesc,
-			@Param("pageCurrent") Integer pageCurrent,
+			@Param("pageIndex") Integer pageIndex,
 			@Param("pageSize") Integer pageSize);
 	/**
 	 * 根据id查询详细商品数据
 	 * @param id
 	 * @return
 	 */
-	Goods findGoodById(Integer id);
+	Goods findGoodsById(Integer id);
 	/**
 	 * 获取总条数  title允许为空
 	 * @param title
