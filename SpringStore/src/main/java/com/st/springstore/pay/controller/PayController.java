@@ -5,13 +5,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.st.springstore.order.dao.OrderDao;
 import com.st.springstore.order.pojo.Order;
+import com.st.springstore.order.service.OrderService;
 
 @Controller
 public class PayController {
 	@Autowired
-	private OrderDao  orderDao;
+	private OrderService  orderService;
 
 	@RequestMapping("toPayPage")
 	public void toPayPage(Order order,Model model) {
@@ -20,7 +20,7 @@ public class PayController {
 	
 	@RequestMapping("doPay")
 	public void doPay(Order order,String password) {
-		
+		orderService.doPay(order,password);
 	}
 
 }
