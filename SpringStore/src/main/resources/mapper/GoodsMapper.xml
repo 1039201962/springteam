@@ -12,10 +12,32 @@
 		select * from goods
 		<where>
 			<if test="#{title}!=null and #{title}!=''">
-				title = #{title}
+				title like concat('%',#{title},'%')
+			</if>
+		</where>
+		order by
+		<if test="#{orderBy}==null or #{orderBy}==''">
+			sale_num
+		</if>
+		<if test="#{orderBy}!=null and #{orderBy}!=''">
+			#{orderBy}
+		</if>
+		<if test="#{isDesc}!=null and #{isDesc}!=''">
+			desc
+		</if>
+		limit #{pageIndex},#{pageCount}
+	</select>
+	<!-- 根据id查询详细商品数据 -->
+	<select id="findGoodById" resultType="com.st.springstore.goods.pojo.Goods">
+		select * from goods where id=#{id}
+	</select>
+	<!-- 获取总条数 -->
+	<select id="getGoodsRows" resultType="int">
+		select count(*) from goods
+		<where>
+			<if test="#{title}!=null and #{title}!=''">
+				title like concat('%',#{title},'%')
 			</if>
 		</where>
 	</select>
-	<!-- 根据id查询详细商品数据 -->
-	<!-- 获取总条数 -->
 </mapper>

@@ -26,7 +26,7 @@ public interface GoodsDao {
 			@Param("title") String title,
 			@Param("orderBy") String orderBy,
 			@Param("isDesc") Integer isDesc,
-			@Param("pageCurrent") Integer pageCurrent,
+			@Param("pageIndex") Integer pageIndex,
 			@Param("pageSize") Integer pageSize);
 	/**
 	 * 根据id查询详细商品数据
