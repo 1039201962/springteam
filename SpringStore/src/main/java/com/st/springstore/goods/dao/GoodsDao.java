@@ -24,6 +24,7 @@ public interface GoodsDao {
 	 */
 	List<Goods> findGoods(
 			@Param("title") String title,
+			@Param("categoryId") Integer categoryId,
 			@Param("orderBy") String orderBy,
 			@Param("isDesc") Integer isDesc,
 			@Param("pageIndex") Integer pageIndex,
@@ -33,7 +34,7 @@ public interface GoodsDao {
 	 * @param id
 	 * @return
 	 */
-	Goods findGoodById(Integer id);
+	Goods findGoodsById(Integer id);
 	/**
 	 * 获取总条数  title允许为空
 	 * @param title
