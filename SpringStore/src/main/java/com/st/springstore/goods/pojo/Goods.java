@@ -19,4 +19,6 @@ public class Goods {
 	private Date modifieTime;
 	/** 推荐状态 */
 	private int reCommend_status;	
+	/** 销量 */
+	private int sale_num;
 }

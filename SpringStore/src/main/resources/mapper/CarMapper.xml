@@ -3,6 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.st.springstore.car.dao.CarDao">
+<<<<<<< HEAD
   <!-- 根据用户id和商品id查询购物车中 -->
   <select id="findById" 
   resultType="com.st.springstore.car.pojo.Car">
@@ -24,3 +25,8 @@
     where userId=#{userId} and goodsId=#{goodsId}
   </update>
 </mapper>
+=======
+
+
+</mapper>
+>>>>>>> branch 'project' of https://github.com/1039201962/springteam.git
