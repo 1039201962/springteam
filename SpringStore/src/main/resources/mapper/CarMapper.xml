@@ -2,7 +2,31 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.st.springstore.car.pojo.Car">
+<mapper namespace="com.st.springstore.car.dao.CarDao">
+<<<<<<< HEAD
+  <!-- 根据用户id和商品id查询购物车中 -->
+  <select id="findById" 
+  resultType="com.st.springstore.car.pojo.Car">
+   select * from shop_cart
+   where userId=#{userId} and goodsId=#{goodsId}
+  </select>
+  <!-- 添加到购物车列表 -->
+  <insert id="addCar" 
+   parameterType="com.st.springstore.car.pojo.Car">
+   insert into shop_cart
+   (createdTime,userId,goodsId,num)
+   values
+   (#{createdTime},#{userId},#{goodsId},#{num})
+  </insert>
+  <!-- 修改购物车商品商品信息(数量) -->
+  <update id="updateCar">
+   update shop_cart set
+    num=#{num}
+    where userId=#{userId} and goodsId=#{goodsId}
+  </update>
+</mapper>
+=======
 
 
 </mapper>
+>>>>>>> branch 'project' of https://github.com/1039201962/springteam.git

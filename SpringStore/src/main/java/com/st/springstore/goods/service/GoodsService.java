@@ -25,7 +25,7 @@ public interface GoodsService {
 	 * @param title
 	 * @return
 	 */
-	PageObject<Goods> findGoods(String title,String orderBy,Integer isDesc,Integer pageCurrent);
+	PageObject<Goods> findGoods(String title,Integer categoryId,String orderBy,Integer isDesc,Integer pageCurrent);
 	/**
 	 * 根据商品id进行商品的详情显示
 	 * @param id
