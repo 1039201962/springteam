@@ -6,12 +6,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.st.springstore.order.pojo.Order;
-import com.st.springstore.order.service.OrderService;
+import com.st.springstore.pay.service.PayService;
 
 @Controller
 public class PayController {
 	@Autowired
-	private OrderService  orderService;
+	private PayService  payService;
 
 	@RequestMapping("toPayPage")
 	public void toPayPage(Order order,Model model) {
@@ -20,7 +20,7 @@ public class PayController {
 	
 	@RequestMapping("doPay")
 	public void doPay(Order order,String password) {
-		orderService.doPay(order,password);
+		payService.doPay(order,password);
 	}
 
 }
