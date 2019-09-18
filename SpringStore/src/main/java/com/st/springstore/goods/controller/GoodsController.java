@@ -35,4 +35,13 @@ public class GoodsController {
 	public JsonResult doFindGoods(String title,Integer categoryId,String orderBy, Integer isDesc, Integer pageCurrent) {
 		return new JsonResult(goodsService.findGoods(title,categoryId,orderBy, isDesc, pageCurrent));
 	}
+	/**
+	 * 根据商品id查询商品信息
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping("/doFindGoodsById")
+	public JsonResult doFindGoodsById(Integer id) {
+		return new JsonResult(goodsService.findGoodById(id));
+	}
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import com.st.springstore.common.exception.ServiceException;
 import com.st.springstore.common.vo.PageObject;
@@ -31,6 +32,8 @@ public class GoodsServiceImpl implements GoodsService{
 	@Override
 	public PageObject<Goods> findGoods(String title,Integer categoryId,String orderBy, Integer isDesc, Integer pageCurrent) {
 		//判断参数
+		if(!StringUtils.isEmpty(title) && categoryId != null)
+			throw new IllegalArgumentException("非法的参数");
 		int pageSize = 10;//每页显示10条数据
 		int pageIndex = (pageCurrent == null)?0:(pageCurrent-1)*10;
 		List<Goods> records = goodsDao.findGoods(title,categoryId,orderBy, isDesc, pageIndex, pageSize);
