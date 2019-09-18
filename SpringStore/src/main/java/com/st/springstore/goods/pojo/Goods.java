@@ -13,6 +13,8 @@ public class Goods {
 	private int goods_num;
 	private String main_img;
 	private String des_img;
+	/** 销量 */
+	private int sale_num;
 	/** 创建时间 */
 	private Date createdTime;
 	/** 修改时间 */
