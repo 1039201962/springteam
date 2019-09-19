@@ -17,7 +17,7 @@ public class OrderController {
 	private OrderService orderService;
 	@RequestMapping("doAddOrder")
 	public String doAddOrder(Integer userId,Integer...goodsIds) {
-		//orderService.addOrder(userId,goodsIds);
+		orderService.addOrder(userId,goodsIds);
 		return "shop-wishlist";
 	}
 	@RequestMapping("doFindOrder")
