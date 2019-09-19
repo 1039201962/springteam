@@ -10,7 +10,6 @@
 		values
 		(null,#{userId},#{order_num},#{goodsId},#{num},
 		#{createdTime},#{pay_status},#{amount},#{valid},#{addr},#{mobile},#{name})
-		insert into order values(null,#{userId},#{order_num},#{goodsId},#{num},now(),#{pay_status},#{amount},#{valid},#{addr},#{mobile},#{name})
 	</insert>
 	<select id="selectInfo"
 		resultType="com.st.springstore.common.vo.OrderVo">
