@@ -18,4 +18,7 @@ public interface CarDao {
 	
 	/**根据用户Id查询出购车列表中此用户的所有加入到购物车的商品信息*/
 	List<Car> findByUserId(Integer userId);
+	
+	/**根据用户Id和商品Id删除购物车中对应的商品*/
+	int delectCarByGoodsId(Integer userId, Integer[] goodsIds);
 }
