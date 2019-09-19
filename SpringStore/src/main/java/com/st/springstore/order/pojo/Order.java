@@ -11,7 +11,7 @@ public class Order {
 	/** 下单用户的id */
 	private int userId;
 	/** 订单号码 */
-	private int order_num;
+	private long order_num;
 	/** 商品的id信息 */
 	private int goodsId;
 	/** 商品总数量  */

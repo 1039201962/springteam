@@ -11,14 +11,23 @@ import com.st.springstore.order.service.OrderService;
 import com.st.springstore.user.pojo.User;
 
 @Controller
+@RequestMapping("/orders/")
 public class OrderController {
 	@Autowired
 	private OrderService orderService;
-	
 	@RequestMapping("doAddOrder")
-	public int doAddOrder(Integer userId,Integer...goodsIds) {
-		orderService.addOrder(userId,goodsIds);
-		return 0;
+	public String doAddOrder(Integer userId,Integer...goodsIds) {
+		//orderService.addOrder(userId,goodsIds);
+		return "shop-wishlist";
 	}
-
+	@RequestMapping("doFindOrder")
+	public JsonResult doFindOrder(Integer orderId) {
+		Order order=orderService.findOrder(orderId);
+		return new JsonResult(order);
+	}
+	@RequestMapping("doDeleteOrder")
+	public JsonResult doDeleteOrder(Integer...orders) {
+		int deleteOrder= orderService.deleteOrder(orders);
+		return new JsonResult("delete ok");
+	}
 }

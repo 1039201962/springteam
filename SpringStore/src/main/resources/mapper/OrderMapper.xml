@@ -4,8 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.st.springstore.order.dao.OrderDao">
 	<insert id="insertOrder"
-		parameterType="com.st.springstore.order.pojo.Order">
-		insert into order_list (id,userId,order_num,
+		parameterType="com.st.springstore.order.pojo.Order"> insert into order_list (id,userId,order_num,
 		goodsId,num,createdTime,pay_status,amount,valid,addr,mobile,name)
 		values
 		(null,#{userId},#{order_num},#{goodsId},#{num},
@@ -15,6 +14,24 @@
 		resultType="com.st.springstore.common.vo.OrderVo">
 		select addr,mobile,name,status
 		from dilivery_info
-		where userId=#{userId}
+		where
+		userId=#{userId}
 	</select>
+	<select id="findOrder"
+		resultType="com.st.springstore.order.pojo.Order">
+		select id,userId,order_num,goodsId,num,createdTime,
+		pay_status,amount,valid,addr,mobile,name
+		from order_list
+		where
+		id=#{orderId}
+	</select>
+	<update id="deleteOrder">
+		update order_list
+		set valid=1
+		where id in
+		<foreach collection="array" open="(" close=")"
+			separator="," item="orderId">
+			#{orderId}
+		</foreach>
+	</update>
 </mapper>
