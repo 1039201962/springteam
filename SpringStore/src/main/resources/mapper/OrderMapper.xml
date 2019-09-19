@@ -29,9 +29,18 @@
 		update order_list
 		set valid=1
 		where id in
-		<foreach collection="array" open="(" close=")"
-			separator="," item="orderId">
+		<foreach collection="array" open="(" close=")" separator=","
+			item="orderId">
 			#{orderId}
 		</foreach>
 	</update>
+	<select id="likeFindOrder"
+		resultType="com.st.springstore.order.pojo.Order">
+		select id,userId,order_num,goodsId,num,createdTime,
+		pay_status,amount,valid,addr,mobile,name 
+		from order_list where goodsId in 
+		(select  goodsId from goods where  goodsId in
+		(select goodsId from order_list where userId=#{userId}) 
+		and title like  CONCAT(CONCAT('%',#{goodsName}),'%'))
+	</select>
 </mapper>

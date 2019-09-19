@@ -30,4 +30,10 @@ public interface OrderDao {
 	 * @return
 	 */
 	int deleteOrder(Integer...orderIds);
+	/**
+	 * 根据商品名称模糊查询订单
+	 * @param goodsName
+	 * @return
+	 */
+	List<Order> likeFindOrder(String goodsName,Integer userId);
 }

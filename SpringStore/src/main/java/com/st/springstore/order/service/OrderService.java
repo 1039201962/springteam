@@ -30,4 +30,6 @@ public interface OrderService {
 	 * @return
 	 */
 	int deleteOrder(Integer...orderIds);
+	
+	List<Order> likeFindOrder(String goodsName,Integer userId);
 }

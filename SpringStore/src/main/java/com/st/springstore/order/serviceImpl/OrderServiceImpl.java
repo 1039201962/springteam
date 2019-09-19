@@ -123,5 +123,13 @@ public class OrderServiceImpl implements OrderService{
 		int rows = orderDao.deleteOrder(orderIds);
 		return rows;
 	}
+	/**
+	 * 根据商品名模糊查询订单
+	 */
+	@Override
+	public List<Order> likeFindOrder(String goodsName, Integer userId) {
+		List<Order> listOrder = orderDao.likeFindOrder(goodsName, userId);
+		return listOrder;
+	}
 
 }

@@ -1,5 +1,6 @@
 package com.st.order.test;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.junit.Test;
@@ -20,5 +21,13 @@ public class FindOrderTests {
 	public void findOrder() {
 		 Order order = orderDao.findOrder(1);
 		 System.out.println(order);
+	}
+	@Test
+	public void findLikeOrder() {
+		List<Order> likeF = orderDao.likeFindOrder("1", 1);
+		for (Iterator iterator = likeF.iterator(); iterator.hasNext();) {
+			Order order = (Order) iterator.next();
+			System.out.println(order);
+		}
 	}
 }
