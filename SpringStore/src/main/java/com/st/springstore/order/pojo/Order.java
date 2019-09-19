@@ -27,7 +27,7 @@ public class Order {
 	/** 收货地址 */
 	private String addr;
 	/** 收货电话 */
-	private String  mobile;
+	private String mobile;
 	/** 收货人姓名 */
 	private String name;
 }
