@@ -16,4 +16,5 @@
       #{sex},#{salt},#{valid},now(),#{money},#{pay_password})
    </insert>
 
+
 </mapper>  
