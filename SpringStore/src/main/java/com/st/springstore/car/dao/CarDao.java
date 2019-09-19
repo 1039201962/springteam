@@ -1,5 +1,7 @@
 package com.st.springstore.car.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.st.springstore.car.pojo.Car;
@@ -13,4 +15,7 @@ public interface CarDao {
     
 	/**修改购物车商品商品信息(数量)*/
 	int updateCar(Integer userId, Integer goodsId,Integer num);
+	
+	/**根据用户Id查询出购车列表中此用户的所有加入到购物车的商品信息*/
+	List<Car> findByUserId(Integer userId);
 }

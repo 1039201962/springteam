@@ -11,8 +11,8 @@ import com.st.springstore.user.pojo.User;
 
 @Service
 public class PayServiceImpl implements PayService {
-	@Autowired
-	private UserDao userDao;
+//	@Autowired
+//	private UserDao userDao;
 
 	@Override
 	public void doPay(Order order, String password) {

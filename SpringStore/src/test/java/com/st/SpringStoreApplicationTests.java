@@ -17,7 +17,7 @@ public class SpringStoreApplicationTests {
     private CarService carService;
 	@Test
 	public void testCarService() {
-		int rows = carService.addCar(1, 1, 3);
+		int rows = carService.addCar(1, 3, 3);
 		System.out.println(rows);
 		
 	}
