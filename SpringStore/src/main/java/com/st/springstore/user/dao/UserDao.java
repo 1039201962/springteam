@@ -13,9 +13,20 @@ public interface UserDao {
 	 */
 	int userRegister(User user);
 	/**
-	 * 根据用户名查找用户
+	 * 根据用id查找用户
 	 * @param username
 	 * @return
 	 */
-	User findUserByUserName(String username);
+	User findUserById(int id);
+	/**
+	 * 修改用户信息
+	 * @param user
+	 */
+	void updateUser(User user);
+	/**
+	 * 通过用户id查询支付密码
+	 * @param id
+	 * @return
+	 */
+	String findPayPasswordByUserId(int id);
 }

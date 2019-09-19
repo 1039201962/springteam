@@ -20,7 +20,7 @@
       valid,createdTime,money,pay_password from user where id =#{id}
 	</select>
 	<!-- 更改用户信息 -->
-	<update id="upDateUser" 
+	<update id="updateUser" 
 			parameterType="com.st.springstore.user.pojo.User">
 		update user set 
 		username =#{username},
