@@ -17,6 +17,13 @@ public class PayServiceImpl implements PayService {
 
 	@Override
 	public void doPay(Order order, String payPassword) {
+		//1.参数校验
+		if(order==null) 
+			throw new IllegalArgumentException("订单信息异常");
+		if(order.getValid()==1) 
+			throw new ServiceException("订单无效");
+		if(payPassword==null || !(payPassword.length()==6)) 
+			throw new IllegalArgumentException("密码参数不合法");
 		int userId = order.getUserId();
 		//User user = userDao.findUserById();
 		User user = new User();
