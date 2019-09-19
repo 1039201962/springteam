@@ -34,6 +34,6 @@ public class PayServiceImpl implements PayService {
 		Double spendMoney = order.getAmount();
 		if(spendMoney>userMoney) throw new ServiceException("账户余额不足");
 		user.setMoney(userMoney-spendMoney);
-		//userdao.updateUserById();
+		//userdao.updateUser(user);
 	}
 }

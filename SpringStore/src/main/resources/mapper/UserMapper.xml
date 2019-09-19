@@ -10,11 +10,34 @@
             keyProperty="id">
       insert into user 
       (id,username,password,email,mobile,sex,salt,
-      valid,createTime,money,pay_password) 
+      valid,createdTime,money,pay_password) 
       values
       (null,#{username},#{password},#{email},#{mobile},
       #{sex},#{salt},#{valid},now(),#{money},#{pay_password})
    </insert>
-
+	
+	<select id="findUserById" resultType="com.st.springstore.user.pojo.User">
+	  select id,username,password,email,mobile,sex,salt,
+      valid,createdTime,money,pay_password from user where id =#{id}
+	</select>
+	
+	<update id="upDateUser" parameterType="com.st.springstore.user.pojo.User">
+		update user set 
+		username =#{username},
+		password=#{password},
+		email=#{email},
+		mobile=#{mobile},
+		sex=#{sex},
+		salt=#{salt},
+		valid=#{valid},
+		createdTime=#{createdTime},
+		money=#{money},
+		pay_password=#{pay_password}
+		where id= #{id}	
+	</update>
+	
+	<select id="findPayPasswordByUserId" resultType="String">
+		select pay_password from user where id=#{userId}
+	</select>
 
 </mapper>  
