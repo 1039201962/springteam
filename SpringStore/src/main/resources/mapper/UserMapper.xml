@@ -4,17 +4,42 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.st.springstore.user.dao.UserDao">
 	<!-- 注册新用户 -->
-	<insert id="registerObject"
-			parameterType="com.st.springstore.user.pojo.User"
-            useGeneratedKeys="true"
-            keyProperty="id">
+	<insert id="userRegister"
+			parameterType="com.st.springstore.user.pojo.User">
       insert into user 
       (id,username,password,email,mobile,sex,salt,
-      valid,createTime,money,pay_password) 
+      valid,createdTime,money,pay_password) 
       values
       (null,#{username},#{password},#{email},#{mobile},
       #{sex},#{salt},#{valid},now(),#{money},#{pay_password})
-   </insert>
-
+    </insert>
+	<!-- 通过id查找用户 -->
+	<select id="findUserById" 
+			resultType="com.st.springstore.user.pojo.User">
+	  select id,username,password,email,mobile,sex,salt,
+      valid,createdTime,money,pay_password from user where id =#{id}
+	</select>
+	<!-- 更改用户信息 -->
+	<update id="upDateUser" 
+			parameterType="com.st.springstore.user.pojo.User">
+		update user set 
+		username =#{username},
+		password=#{password},
+		email=#{email},
+		mobile=#{mobile},
+		sex=#{sex},
+		salt=#{salt},
+		valid=#{valid},
+		createdTime=#{createdTime},
+		money=#{money},
+		pay_password=#{pay_password}
+		where id= #{id}	
+	</update>
+	<!-- 查询支付密码 -->
+	<select id="findPayPasswordByUserId" 
+			resultType="String">
+		select pay_password from user where id=#{userId}
+	</select>
+	
 
 </mapper>  

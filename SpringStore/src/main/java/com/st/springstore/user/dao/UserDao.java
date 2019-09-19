@@ -7,9 +7,15 @@ import com.st.springstore.user.pojo.User;
 @Mapper
 public interface UserDao {
 	/**
-	 * 保存用户自身信息
+	 *  注册新用户
 	 * @param user
 	 * @return
 	 */
-	int registerObject(User user);
+	int userRegister(User user);
+	/**
+	 * 根据用户名查找用户
+	 * @param username
+	 * @return
+	 */
+	User findUserByUserName(String username);
 }

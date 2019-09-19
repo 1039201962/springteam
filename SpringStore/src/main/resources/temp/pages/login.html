@@ -4,7 +4,7 @@
 <title>Log in</title>
 </head>
 <body>
-	<div align="center">
+	<!-- <div align="center">
 		<form action="" name="myform">
 			<table>
 				<tr>
@@ -15,18 +15,20 @@
 					<td>密 码：</td>
 					<td><input type="text" id="password" /></td>
 				</tr>
-				<!-- <tr>
+				<tr>
 					<td>验证码：</td>
 					<td align="left"><input type="text" size="5" id="code" /></td>
-				</tr> -->
+				</tr>
 			</table>
 		</form>
 		<table>
 			<tr>
-				<td><input type="submit" value="提交" onclick=account_submit() />
+				<td><input type="submit" value="登录" onclick=account_submit() />
 				</td>
-				<td><input type="submit" value="重置" onclick=account_reset() /></td>
-				<td><input type="submit" value="注册" onclick=account_register() /></td>
+				<td><input type="submit" value="注册" onclick=account_register() />
+				</td>
+				<td><input type="submit" value="重置" onclick=account_reset() />
+				</td>
 			</tr>
 		</table>
 	</div>
@@ -40,11 +42,28 @@
 				alert("密码不能为空！！！");
 			}
 		}
+		function account_register() {
+			var params={
+					 username:$("#user").val(),
+					 password:$("#password").val(),
+				  }
+			var url="user/doLogin";
+			console.log("params",params);
+			$.post(url,params,function(result){
+			if(result.state==1){
+			//跳转到indexUI对应的页面
+				location.href="doIndexUI?t="+Math.random();
+			}else{
+				$(".login-box-msg").html(result.message); 
+			}
+				return false;//防止刷新时重复提交
+			});
+		}
 		function account_reset() {
 			document.getElementById("user").value = "";
 			document.getElementById("password").value = "";
 			document.getElementById("code").value = "";
 		}
-	</script>
+	</script> -->
 </body>
 </html>
