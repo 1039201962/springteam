@@ -2,27 +2,19 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<<<<<<< HEAD
-<mapper namespace="com.st.springstore.car.dao.CarDao">
-<insert id="insertOrder" parameterType="com.st.springstore.order.pojo.Order">
-insert into order (id,userId,order_num,  
-goodsId,num,createdTIme,pay_status,amount,valid,addr,mobile,name) 
-values
-(#{id},#{userId},#{order_num},#{goodsId},#{num},
-#{createdTime},#{pay_status},#{amount},#{valid},#{addr},#{mobile},#{name})
-</insert>
-=======
 <mapper namespace="com.st.springstore.order.dao.OrderDao">
->>>>>>> branch 'project' of https://github.com/1039201962/springteam.git
-
-<<<<<<< HEAD
-<select id="selectInfo" resultType="com.st.springstore.common.vo.OrderVo">
-select addr,mobile,name,status
-from dilivery_info
-where userId=#{userId}
-</select>
+	<insert id="insertOrder"
+		parameterType="com.st.springstore.order.pojo.Order">
+		insert into order (id,userId,order_num,
+		goodsId,num,createdTime,pay_status,amount,valid,addr,mobile,name)
+		values
+		(null,#{userId},#{order_num},#{goodsId},#{num},
+		#{createdTime},#{pay_status},#{amount},#{valid},#{addr},#{mobile},#{name})
+	</insert>
+	<select id="selectInfo"
+		resultType="com.st.springstore.common.vo.OrderVo">
+		select addr,mobile,name,status
+		from dilivery_info
+		where userId=#{userId}
+	</select>
 </mapper>
-=======
-
-</mapper>
->>>>>>> branch 'project' of https://github.com/1039201962/springteam.git

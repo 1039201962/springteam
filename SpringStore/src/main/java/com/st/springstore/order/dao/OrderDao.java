@@ -13,6 +13,9 @@ public interface OrderDao {
 	 * @param zyj
 	 */
 	 int insertOrder(Order order);
-	 
+	 /**
+		 * 查询收货信息
+		 * @param zyj
+		 */
 	 List<OrderVo> selectInfo(Integer userId);
 }

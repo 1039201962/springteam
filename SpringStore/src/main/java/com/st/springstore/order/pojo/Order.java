@@ -17,7 +17,7 @@ public class Order {
 	/** 商品总数量  */
 	private int num;
 	/** 订单创建时间 */
-	private Date createTime;
+	private Date createdTime;
 	/** 支付状态 */
 	private int pay_status;
 	/** 订单金额 */

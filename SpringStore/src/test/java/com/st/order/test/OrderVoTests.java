@@ -17,7 +17,7 @@ public class OrderVoTests {
 	@Autowired
 	private OrderDao orderDao;
 	@Test
-	public void orderVo() {
+	public void orderVo(){
 		List<OrderVo> list = orderDao.selectInfo(1);
 		for (OrderVo orderVo : list) {
 			System.out.println(orderVo);
