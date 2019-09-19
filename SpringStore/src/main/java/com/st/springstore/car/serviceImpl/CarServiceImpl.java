@@ -16,7 +16,6 @@ import com.st.springstore.common.exception.ServiceException;
 public class CarServiceImpl implements CarService{
     @Autowired
     private CarDao carDao;
-    @Autowired
 //	/**添加到cookie中 */
 //	@Override
 //	public void addCookie(Integer userId, Integer num) {
