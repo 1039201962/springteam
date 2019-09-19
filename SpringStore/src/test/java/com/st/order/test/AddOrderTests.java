@@ -1,11 +1,13 @@
 package com.st.order.test;
 
 import java.util.Date;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
 import com.st.springstore.order.dao.OrderDao;
 import com.st.springstore.order.pojo.Order;
 
@@ -16,11 +18,7 @@ public class AddOrderTests {
 	private OrderDao orderDao;
 	@Test
 	public void addOrdertest() {
-<<<<<<< HEAD
-		Order order=new Order();
-=======
 		Order order = new Order();
->>>>>>> branch 'project' of https://github.com/1039201962/springteam.git
 		order.setUserId(1);
 		order.setCreatedTime(new Date());
 		order.setAddr("成都");
@@ -31,7 +29,7 @@ public class AddOrderTests {
 		order.setAmount(555.0);
 		order.setValid(0);
 		order.setMobile("1008611");
-		order.setName("1");
+		order.setName("王老板");
 		int insertOrder = orderDao.insertOrder(order);
 		System.out.println(insertOrder);
 	}
