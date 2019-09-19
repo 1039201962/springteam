@@ -4,17 +4,43 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.st.springstore.order.dao.OrderDao">
 	<insert id="insertOrder"
-		parameterType="com.st.springstore.order.pojo.Order">
-		insert into order (id,userId,order_num,
-		goodsId,num,createdTIme,pay_status,amount,valid,addr,mobile,name)
+		parameterType="com.st.springstore.order.pojo.Order"> insert into order_list (id,userId,order_num,
+		goodsId,num,createdTime,pay_status,amount,valid,addr,mobile,name)
 		values
-		(#{id},#{userId},#{order_num},#{goodsId},#{num},
-		#{createdTime},#{pay_status},#{amount},#{valid},#{addr},#{mobile},#{name})
+		(null,#{userId},#{order_num},#{goodsId},#{num},
+		now(),#{pay_status},#{amount},#{valid},#{addr},#{mobile},#{name})
 	</insert>
 	<select id="selectInfo"
 		resultType="com.st.springstore.common.vo.OrderVo">
 		select addr,mobile,name,status
 		from dilivery_info
-		where userId=#{userId}
+		where
+		userId=#{userId}
+	</select>
+	<select id="findOrder"
+		resultType="com.st.springstore.order.pojo.Order">
+		select id,userId,order_num,goodsId,num,createdTime,
+		pay_status,amount,valid,addr,mobile,name
+		from order_list
+		where
+		id=#{orderId}
+	</select>
+	<update id="deleteOrder">
+		update order_list
+		set valid=1
+		where id in
+		<foreach collection="array" open="(" close=")" separator=","
+			item="orderId">
+			#{orderId}
+		</foreach>
+	</update>
+	<select id="likeFindOrder"
+		resultType="com.st.springstore.order.pojo.Order">
+		select id,userId,order_num,goodsId,num,createdTime,
+		pay_status,amount,valid,addr,mobile,name 
+		from order_list where goodsId in 
+		(select  goodsId from goods where  goodsId in
+		(select goodsId from order_list where userId=#{userId}) 
+		and title like  CONCAT(CONCAT('%',#{goodsName}),'%'))
 	</select>
 </mapper>

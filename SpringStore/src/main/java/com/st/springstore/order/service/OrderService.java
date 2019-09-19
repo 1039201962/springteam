@@ -1,7 +1,9 @@
 package com.st.springstore.order.service;
 
 import java.util.List;
+
 import com.st.springstore.common.vo.OrderVo;
+import com.st.springstore.order.pojo.Order;
 
 public interface OrderService {
 	/**
@@ -11,9 +13,23 @@ public interface OrderService {
 	 */
 	int addOrder (Integer userId,Integer...goodsIds);
 	/**
-	 * 查询收货信息
+	 * 通过userId查询收货信息
 	 * @param userId
 	 * @return
 	 */
-	List<OrderVo> findOrderVo(Integer userId);
+	List<OrderVo> findOrderVos(Integer userId);
+	/**
+	 * 通过订单id查询订单
+	 * @param orderId
+	 * @return
+	 */
+	Order findOrder(Integer orderId);
+	/**
+	 * 通过订单id删除订单
+	 * @param orderIds
+	 * @return
+	 */
+	int deleteOrder(Integer...orderIds);
+	
+	List<Order> likeFindOrder(String goodsName,Integer userId);
 }

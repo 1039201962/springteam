@@ -15,7 +15,7 @@
    insert into shop_cart
    (createdTime,userId,goodsId,num)
    values
-   (#{createdTime},#{userId},#{goodsId},#{num})
+   (now(),#{userId},#{goodsId},#{num})
   </insert>
   <!-- 修改购物车商品商品信息(数量) -->
   <update id="updateCar">
@@ -23,4 +23,10 @@
     num=#{num}
     where userId=#{userId} and goodsId=#{goodsId}
   </update>
+  <!-- 根据用户Id查询出购车列表中此用户的所有加入到购物车的商品信息 -->
+  <select id="findByUserId" 
+   resultType="com.st.springstore.car.pojo.Car">
+   select goodsId,num from shop_cart
+   where userId=#{userId}
+  </select>
 </mapper>

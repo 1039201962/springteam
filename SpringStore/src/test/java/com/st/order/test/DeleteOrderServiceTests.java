@@ -1,26 +1,21 @@
 package com.st.order.test;
 
-import java.util.List;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.st.springstore.common.vo.OrderVo;
-import com.st.springstore.order.dao.OrderDao;
+import com.st.springstore.order.service.OrderService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class OrderVoTests {
+public class DeleteOrderServiceTests {
 	@Autowired
-	private OrderDao orderDao;
+	private OrderService orderService;
 	@Test
-	public void orderVo(){
-		List<OrderVo> list = orderDao.selectInfo(1);
-		for (OrderVo orderVo : list) {
-			System.out.println(orderVo);
-		}
+	public void orderService() {
+		int deleteOrder = orderService.deleteOrder(1);
+		System.err.println(deleteOrder);
 	}
 }

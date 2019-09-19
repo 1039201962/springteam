@@ -5,10 +5,12 @@ import java.util.List;
 import com.st.springstore.car.pojo.Car;
 
 public interface CarService {
-    /**添加到cookie*/
-	void addCookie(Integer userId, Integer num);
+//    /**添加到cookie*/
+//	void addCookie(Integer userId, Integer num);
     /**添加到购物车*/
 	int addCar(Integer userId, Integer goodsId, Integer num);
+
+	void SelectCar(Integer userId);
     
 	
 //	/**修改cookie中对应的商品*/
