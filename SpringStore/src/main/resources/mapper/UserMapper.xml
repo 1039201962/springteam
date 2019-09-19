@@ -3,6 +3,18 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.st.springstore.user.dao.UserDao">
+	<!-- 注册新用户 -->
+	<insert id="registerObject"
+			parameterType="com.st.springstore.user.pojo.User"
+            useGeneratedKeys="true"
+            keyProperty="id">
+      insert into user 
+      (id,username,password,email,mobile,sex,salt,
+      valid,createTime,money,pay_password) 
+      values
+      (null,#{username},#{password},#{email},#{mobile},
+      #{sex},#{salt},#{valid},now(),#{money},#{pay_password})
+   </insert>
 
 
 </mapper>  
