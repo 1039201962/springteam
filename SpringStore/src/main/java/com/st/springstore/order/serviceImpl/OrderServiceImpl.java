@@ -34,7 +34,7 @@ public class OrderServiceImpl implements OrderService{
 		Order order = new Order();
 		order.setUserId(userId);//设置用户id
 		order.setOrder_num(orderId);//设置订单编号
-		order.setCreateTime(new Date());//设置订单数量
+		order.setCreatedTime(new Date());//设置订单数量
 		order.setPay_status(0);//设置支付状态
 		order.setValid(0);//设置订单状态
 		return 0;
