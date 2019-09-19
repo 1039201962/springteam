@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class PageController {
-	@RequestMapping("/{pages}")
+	@RequestMapping("/index")
 	public String pages(@PathVariable String pages) {
-		return pages;
+		return "index";
 	}
 }
