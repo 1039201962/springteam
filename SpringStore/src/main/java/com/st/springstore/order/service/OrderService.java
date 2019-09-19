@@ -1,14 +1,6 @@
 package com.st.springstore.order.service;
 
-<<<<<<< HEAD
 import java.util.List;
-=======
-
-public interface OrderService {
-
-	
->>>>>>> branch 'project' of https://github.com/1039201962/springteam.git
-
 import com.st.springstore.common.vo.OrderVo;
 
 public interface OrderService {
