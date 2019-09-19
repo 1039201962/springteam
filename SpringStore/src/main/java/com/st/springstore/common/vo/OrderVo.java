@@ -11,7 +11,7 @@ public class OrderVo {
 	/**收货地址*/
 	private String addr;
 	/**收货人电话*/
-	private Integer mobile;
+	private String mobile;
 	/**收货人姓名*/
 	private String name;
 	/**默认地址0/1*/

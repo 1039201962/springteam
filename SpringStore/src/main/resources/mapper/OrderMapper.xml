@@ -5,16 +5,11 @@
 <mapper namespace="com.st.springstore.order.dao.OrderDao">
 	<insert id="insertOrder"
 		parameterType="com.st.springstore.order.pojo.Order">
-<<<<<<< HEAD
-		insert into order (id,userId,order_num,
+		insert into order_list (id,userId,order_num,
 		goodsId,num,createdTime,pay_status,amount,valid,addr,mobile,name)
 		values
 		(null,#{userId},#{order_num},#{goodsId},#{num},
 		#{createdTime},#{pay_status},#{amount},#{valid},#{addr},#{mobile},#{name})
-=======
-		insert into order values(null,#{userId},#{order_num},#{goodsId},#{num},now(),#{pay_status},#{amount},#{valid},#{addr},#{mobile},#{name})
-		
->>>>>>> branch 'project' of https://github.com/1039201962/springteam.git
 	</insert>
 	<select id="selectInfo"
 		resultType="com.st.springstore.common.vo.OrderVo">

@@ -2,6 +2,7 @@ package com.st.springstore.order.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.st.springstore.common.vo.JsonResult;
 import com.st.springstore.goods.pojo.Goods;
@@ -13,7 +14,9 @@ import com.st.springstore.user.pojo.User;
 public class OrderController {
 	@Autowired
 	private OrderService orderService;
-	public int doaddOrder(Integer userId,Integer...goodsIds) {
+	
+	@RequestMapping("doAddOrder")
+	public int doAddOrder(Integer userId,Integer...goodsIds) {
 		orderService.addOrder(userId,goodsIds);
 		return 0;
 	}
