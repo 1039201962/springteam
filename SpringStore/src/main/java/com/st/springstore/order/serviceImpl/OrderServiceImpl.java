@@ -19,12 +19,6 @@ import com.st.springstore.order.service.OrderService;
 public class OrderServiceImpl implements OrderService{
 	@Autowired
 	private OrderDao orderDao;
-	@Autowired
-	private Order order;
-	@Autowired
-	private Car car;
-	@Autowired
-	private Goods goods;
 	public static Integer  orderId() {
 	        int r1 = (int) (Math.random() * (9) + 1);//产生2个0-9的随机数
 	        int r2 = (int) (Math.random() * (10));
@@ -37,7 +31,7 @@ public class OrderServiceImpl implements OrderService{
 		if(goodsIds.length==0)
 		throw new ServiceException("没有商品数据");
 		int orderId = OrderServiceImpl.orderId();
-		
+		Order order = new Order();
 		order.setUserId(userId);//设置用户id
 		order.setOrder_num(orderId);//设置订单编号
 		order.setCreateTime(new Date());//设置订单数量

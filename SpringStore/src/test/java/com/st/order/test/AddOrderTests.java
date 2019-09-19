@@ -15,11 +15,10 @@ import com.st.springstore.order.pojo.Order;
 @SpringBootTest
 public class AddOrderTests {
 	@Autowired
-	private Order order;
-	@Autowired
 	private OrderDao orderDao;
 	@Test
 	public void addOrdertest() {
+		Order order = new Order();
 		order.setUserId(1);
 		order.setCreateTime(new Date());
 		order.setAddr("成都");
