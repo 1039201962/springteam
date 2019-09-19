@@ -8,7 +8,7 @@ import lombok.Data;
 public class Car {
 
 	private int id;
-	private Date createTime;
+	private Date createdTime;
 	private int userId;
 	private int goodsId;
 	private int num;
