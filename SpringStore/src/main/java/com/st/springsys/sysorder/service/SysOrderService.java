@@ -7,6 +7,12 @@ import com.st.springsys.sysorder.pojo.SysOrder;
 
 public interface SysOrderService {
 	/**
+	 * 通过订单id删除订单
+	 * @param orderIds
+	 * @return
+	 */
+	int deleteSysOrder(Integer...orderIds);
+	/**
 	 * 根据用户查询订单信息
 	 * @return
 	 */
