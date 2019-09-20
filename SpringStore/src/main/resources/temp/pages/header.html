@@ -45,7 +45,7 @@
                         <li><a href="shop-wishlist.html">我的订单</a></li>
                         <li><a href="shop-checkout.html">注 销</a></li>
 						<!--登录成功显示注销  没有登录显示登录,也没有欢迎页面-->
-						<li><a href="page-login.html">登 录</a></li>
+						<li><a href="/user/login">登 录</a></li>
                     </ul>
                 </div>
                 <!-- END TOP BAR MENU -->
@@ -141,8 +141,8 @@
         <!-- BEGIN NAVIGATION -->
         <div class="header-navigation">
           <ul>
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
+            <li>
+              <a href="javascript:;" onclick="doFind()">
                 首页
               </a>
                 
@@ -171,8 +171,8 @@
               </ul> -->
               <!-- END DROPDOWN MENU -->
             </li>
-            <li class="dropdown dropdown-megamenu">
-              <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
+            <li>
+              <a href="javascript:;" onclick="doFind()">
                 全部鲜花
               </a>
               <!-- <ul class="dropdown-menu">
@@ -353,7 +353,7 @@
               <div class="search-box">
                 <form action="#">
                   <div class="input-group">
-                    <input type="text" placeholder="Search" class="form-control">
+                    <input type="text" placeholder="Search" class="form-control" id = "search">
                     <span class="input-group-btn">
                       <button class="btn btn-primary" type="submit">Search</button>
                     </span>
@@ -375,4 +375,21 @@
 				$(".search-box").hide();
 			}
 		})
+		function doFind(id){
+			var url = "/goods/doFindGoods";
+			var title = "";
+			var param = {
+					title : $("#search").val(), //js:document.getElementById("..").value
+					categoryId : id,
+					orderBy : null, 
+					isDesc : null, 
+					pageCurrent : 1
+			}
+			if(!id){//没有id
+				$.get(url,param,function(result){
+					if(result.state == 1)
+						location.href="/doJumpPageResult";
+				})
+			}
+		}
 	</script>

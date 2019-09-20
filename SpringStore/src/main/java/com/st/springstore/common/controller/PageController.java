@@ -10,4 +10,12 @@ public class PageController {
 	public String pages(@PathVariable String pages) {
 		return pages;
 	}
+	/**
+	 * 跳转到搜索结果页
+	 * @return
+	 */
+	@RequestMapping("/doJumpPageResult")
+	public String doJumpPageResult() {
+		return "shop-search-result";
+	}
 }
