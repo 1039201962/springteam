@@ -30,4 +30,11 @@ public interface UserDao {
 	 * @return
 	 */
 	String findPayPasswordByUserId(int id);
+	/**
+	 * 根据用户名查询用户
+	 * @param userName
+	 * @return
+	 */
+	User selectUser(String userName);
+	
 }
