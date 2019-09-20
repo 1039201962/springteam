@@ -1,11 +1,12 @@
 package com.st.springstore.order.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import lombok.Data;
 
 @Data
-public class Order {
+public class Order implements Serializable{
 	/** 订单的id */
 	private int id;
 	/** 下单用户的id */

@@ -21,12 +21,6 @@ public class PayTest {
 		String pay_password = userDao.findPayPasswordByUserId(1);
 		System.out.println(pay_password);
 		
-		  User user = userDao.findUserById(1); 
-		  System.out.println(user);
-		  user.setMobile("18780069752"); 
-		  userDao.upDateUser(user);
-		  User user1 =userDao.findUserById(1); 
-		  System.out.println(user1);
 		 
 		
 		

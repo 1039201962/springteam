@@ -8,20 +8,26 @@ import com.st.springstore.user.pojo.User;
 
 public interface UserDao {
 	/**
-	 * 保存用户自身信息
+	 *  注册新用户
 	 * @param user
 	 * @return
 	 */
-	int registerObject(User user);
+	int userRegister(User user);
 	/**
-	 * 根据用户的id查询用户，返回一个用户实体
-	 * @param id
+	 * 根据用id查找用户
+	 * @param username
 	 * @return
 	 */
 	User findUserById(int id);
-	
-	
-	int upDateUser(User user);
-	
-	String findPayPasswordByUserId(int userId);
+	/**
+	 * 修改用户信息
+	 * @param user
+	 */
+	void updateUser(User user);
+	/**
+	 * 通过用户id查询支付密码
+	 * @param id
+	 * @return
+	 */
+	String findPayPasswordByUserId(int id);
 }

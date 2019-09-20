@@ -1,11 +1,12 @@
 package com.st.springstore.user.pojo;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 import lombok.Data;
 
 @Data
-public class User {
+public class User implements Serializable {
 	private int id;
 	private String username;
 	/** 加密处理 */

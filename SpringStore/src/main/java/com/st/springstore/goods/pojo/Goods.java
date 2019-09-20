@@ -1,11 +1,12 @@
 package com.st.springstore.goods.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import lombok.Data;
 
 @Data
-public class Goods {
+public class Goods implements Serializable{
 	private int id ;
 	private String title;
 	private double price;
@@ -21,4 +22,6 @@ public class Goods {
 	private int reCommend_status;	
 	/** 销量 */
 	private int sale_num;
+	/** 是否上架 */
+	private int onSale;
 }
