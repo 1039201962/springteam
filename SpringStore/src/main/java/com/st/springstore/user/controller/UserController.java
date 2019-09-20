@@ -10,6 +10,7 @@ import com.st.springstore.user.pojo.User;
 import com.st.springstore.user.serviceImpl.UserServiceImpl;
 
 @Controller
+@RequestMapping("/user")
 public class UserController {
 	@Autowired
 	private UserDao userDao;
@@ -18,7 +19,7 @@ public class UserController {
 
 	@RequestMapping("/login")
 	public String login(){
-		return "login";
+		return "shop-checkout";
 	}
 
 	@RequestMapping("/regist")
