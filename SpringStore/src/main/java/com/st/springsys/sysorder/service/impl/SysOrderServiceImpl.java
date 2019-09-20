@@ -16,7 +16,14 @@ import com.st.springsys.sysorder.service.SysOrderService;
 public class SysOrderServiceImpl implements SysOrderService{
 	@Autowired
 	private SysOrderDao sysOrderDao;
-
+     
+	/**根据id删除订单*/
+	@Override
+	public int deleteSysOrder(Integer... orderIds) {
+		int rows = sysOrderDao.deleteSysOrder(orderIds);
+		return rows;
+	}		
+	
 	/**查询订单*/
 	@Override
 	public SysOrder findOrderByName(String name) {
@@ -55,6 +62,7 @@ public class SysOrderServiceImpl implements SysOrderService{
 		//4.对查询结果进行封装并返回
 		return new PageObject<>(pageCurrent, pageSize, rowCount, records);
 	}
+
 
 
 

@@ -15,6 +15,13 @@ public class SysOrderController {
 	@Autowired
 	private SysOrderService sysOrderService;
 	
+	/**删除订单*/
+	@RequestMapping("doDeleteSysOrder")
+	public JsonResult doDeleteSysOrder(Integer...orders) {
+		sysOrderService.deleteSysOrder(orders);
+		return new JsonResult("delete ok");
+	}
+	
 	/**根据用户搜索*/
 	@RequestMapping("doFindOrderById")
 	public JsonResult doFindOrderById(String name) {

@@ -10,6 +10,12 @@ import com.st.springsys.sysorder.pojo.SysOrder;
 @Mapper
 public interface SysOrderDao {
 	/**
+	 * 根据订单id删除订单
+	 * @param orderIds
+	 * @return
+	 */
+	int deleteSysOrder(Integer...orderIds);
+	/**
 	 * 根据用户名查询订单详细信息
 	 * @return
 	 */
