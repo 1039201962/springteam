@@ -41,4 +41,6 @@ public class SysOrderTest {
     	int rows = sysosi.deleteSysOrder(1);
     	System.out.println(rows);
     }
+    
+  
 }

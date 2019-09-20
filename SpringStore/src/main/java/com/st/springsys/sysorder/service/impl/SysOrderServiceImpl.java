@@ -17,6 +17,17 @@ public class SysOrderServiceImpl implements SysOrderService{
 	@Autowired
 	private SysOrderDao sysOrderDao;
      
+	/**修改订单*/
+	@Override
+	public int updateSysOrder(SysOrder sysOrder) {
+		if(sysOrder==null)
+			throw new IllegalArgumentException("保存订单不能为空");
+		if(sysOrder.getValid()==1)
+			throw new IllegalArgumentException("改订单已不存在");
+		int rows = sysOrderDao.updateSysOrder(sysOrder);
+		return rows;
+	}
+	
 	/**根据id删除订单*/
 	@Override
 	public int deleteSysOrder(Integer... orderIds) {
@@ -54,7 +65,7 @@ public class SysOrderServiceImpl implements SysOrderService{
 		if(rowCount==0)
 			throw new ServiceException("没有找到对应记录");
 		//3.查询当前页记录
-		int pageSize=3;
+		int pageSize=5;
 		int pageIndex=(pageCurrent-1)*pageSize;
 		List<SysOrder> records=
 				sysOrderDao.findPageObjects(name,
@@ -62,6 +73,7 @@ public class SysOrderServiceImpl implements SysOrderService{
 		//4.对查询结果进行封装并返回
 		return new PageObject<>(pageCurrent, pageSize, rowCount, records);
 	}
+
 
 
 
