@@ -2,7 +2,9 @@ package com.st.springstore.car.service;
 
 import java.util.List;
 
+import com.st.springstore.car.pojo.Car;
 import com.st.springstore.common.vo.CarGoodsVo;
+import com.st.springstore.common.vo.PageObject;
 
 public interface CarService {
 //    /**添加到cookie*/
@@ -18,14 +20,17 @@ public interface CarService {
 	
 	/**删除购物车中对应的商品*/
 	int delectCar(Integer userId, Integer...goodsIds);
+	/**查询用户选中的商品总金额*/
+	double SelectCarMoney(Integer userId, Integer...goodsId);
 	
-//	/**删除cookie中对应的商品*/
-//	void deleteCookie(Integer goodsId);
-//	
-//	int deleteCar(Integer userId,Integer goodsId);
-//	
-//	/**展示购物车列表从cookie中获取数据*/
-//	void selectCookie();
-//	/**展示购物车列表*/
-//	List<Car> selectCar(Integer userId);
+	/**
+             * 获取当前页的分析信息
+     * @param username 用户名
+     * @param pageCurrent 当前页页码
+     * @return 封装了当前页记录以及页码信息的对象
+     */
+     PageObject<CarGoodsVo> findPageObjects(
+	                    Integer userId,
+	                    Integer pageCurrent);
 }
+
