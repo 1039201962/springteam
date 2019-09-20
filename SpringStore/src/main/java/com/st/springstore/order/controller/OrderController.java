@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.st.springstore.common.vo.JsonResult;
+import com.st.springstore.common.vo.OrderVo;
 import com.st.springstore.goods.pojo.Goods;
 import com.st.springstore.order.pojo.Order;
 import com.st.springstore.order.service.OrderService;
@@ -24,9 +26,10 @@ public class OrderController {
 	 * @return
 	 */
 	@RequestMapping("doAddOrder")
-	public String doAddOrder(Integer userId,Integer...goodsIds) {
+	@ResponseBody
+	public JsonResult doAddOrder(Integer userId,Integer...goodsIds) {
 		orderService.addOrder(userId,goodsIds);
-		return "shop-wishlist";
+		return new JsonResult("orderAdd ok");
 	}
 	/**
 	 * 接收订单ID,查询订单
@@ -34,8 +37,9 @@ public class OrderController {
 	 * @return
 	 */
 	@RequestMapping("doFindOrder")
-	public JsonResult doFindOrder(Integer orderId) {
-		Order order=orderService.findOrder(orderId);
+	@ResponseBody
+	public JsonResult doFindOrder(Integer userId,Integer orderId) {
+		Order order=orderService.findOrder(userId,orderId);
 		return new JsonResult(order);
 	}
 	/**
@@ -44,6 +48,7 @@ public class OrderController {
 	 * @return
 	 */
 	@RequestMapping("doDeleteOrder")
+	@ResponseBody
 	public JsonResult doDeleteOrder(Integer...orders) {
 		int deleteOrder= orderService.deleteOrder(orders);
 		return new JsonResult("delete ok");
@@ -55,8 +60,21 @@ public class OrderController {
 	 * @return
 	 */
 	@RequestMapping("doLikeFindOrder")
+	@ResponseBody
 	public JsonResult doLikeFindOrder(String goodsName,Integer userId) {
 		List<Order> findOrder = orderService.likeFindOrder(goodsName, userId);
 		return new JsonResult(findOrder);
+	}
+	/**
+	 * 接收用户id,查询所有订单
+	 * @param userId
+	 * @return
+	 */
+	@RequestMapping("doFindAllOrder")
+	@ResponseBody
+	public JsonResult doFindAllOrder(Integer userId) {
+		System.out.println("doFindAllOrder");
+		List<OrderVo> list = orderService.findAllOrder(userId);
+		return new JsonResult(list);
 	}
 }

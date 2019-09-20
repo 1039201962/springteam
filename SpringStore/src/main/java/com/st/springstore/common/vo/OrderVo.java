@@ -1,19 +1,22 @@
 package com.st.springstore.common.vo;
 
+import java.util.Date;
+
 import lombok.Data;
-/**
- * 
- * @author zyj
- *
- */
 @Data
 public class OrderVo {
-	/**收货地址*/
-	private String addr;
-	/**收货人电话*/
-	private String mobile;
-	/**收货人姓名*/
+	/** 订单号码 */
+	private long order_num;
+	/** 订单创建时间 */
+	private Date createdTime;
+	/** 收货人姓名 */
 	private String name;
-	/**默认地址0/1*/
-	private Integer status;
+	/** 支付状态 */
+	private int pay_status;
+	/** 商品描述*/
+	private String title;
+	/** 商品数量 */
+	private int num;
+	/** 商品图片*/
+	private String main_img;
 }

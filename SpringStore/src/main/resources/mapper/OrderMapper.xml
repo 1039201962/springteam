@@ -3,6 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.st.springstore.order.dao.OrderDao">
+		<!-- 生成订单 -->
 	<insert id="insertOrder"
 		parameterType="com.st.springstore.order.pojo.Order"> insert into order_list (id,userId,order_num,
 		goodsId,num,createdTime,pay_status,amount,valid,addr,mobile,name)
@@ -10,21 +11,24 @@
 		(null,#{userId},#{order_num},#{goodsId},#{num},
 		now(),#{pay_status},#{amount},#{valid},#{addr},#{mobile},#{name})
 	</insert>
+	<!-- 查询地址 -->
 	<select id="selectInfo"
-		resultType="com.st.springstore.common.vo.OrderVo">
+		resultType="com.st.springstore.common.vo.ReceivingVo">
 		select addr,mobile,name,status
 		from dilivery_info
 		where
 		userId=#{userId}
 	</select>
+	<!-- 根据id查询订单  -->
 	<select id="findOrder"
 		resultType="com.st.springstore.order.pojo.Order">
 		select id,userId,order_num,goodsId,num,createdTime,
 		pay_status,amount,valid,addr,mobile,name
 		from order_list
 		where
-		id=#{orderId}
+		id=#{orderId} and valid=0 and userId=#{userId}
 	</select>
+	<!-- 删除订单 -->
 	<update id="deleteOrder">
 		update order_list
 		set valid=1
@@ -34,6 +38,7 @@
 			#{orderId}
 		</foreach>
 	</update>
+	<!-- 模糊查询 -->
 	<select id="likeFindOrder"
 		resultType="com.st.springstore.order.pojo.Order">
 		select id,userId,order_num,goodsId,num,createdTime,
@@ -41,6 +46,14 @@
 		from order_list where goodsId in 
 		(select  goodsId from goods where  goodsId in
 		(select goodsId from order_list where userId=#{userId}) 
-		and title like  CONCAT(CONCAT('%',#{goodsName}),'%'))
+		and title like  CONCAT(CONCAT('%',#{goodsName}),'%')) and
+		valid=0
+	</select>
+
+	<!-- 根据id查询订单信息 -->
+	<select id="findOrderByUserId" resultType="com.st.springstore.common.vo.OrderVo" >
+		select o.order_num,o.createdTime,o.name,o.valid,o.num,g.main_img,g.title
+		from goods g,order_list o
+		where o.goodsId=g.goodsId and o.userId=#{userId} and valid=0
 	</select>
 </mapper>
