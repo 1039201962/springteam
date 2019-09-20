@@ -8,11 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class SysPageController {
 	@RequestMapping("/admin")
 	public String index() {
-		return "sysIndex";
+		return "sys-index";
 	}
-	@RequestMapping("admin/{moudle}/{page}")
-	public String pages(@PathVariable String moudle,@PathVariable String page) {
-		System.out.println(page);
-		return "sys_"+moudle+"_"+page;
+
+	@RequestMapping("/admin/{page}")
+	public String pages(@PathVariable String page) {
+		return "sys-" + page;
 	}
+
 }
