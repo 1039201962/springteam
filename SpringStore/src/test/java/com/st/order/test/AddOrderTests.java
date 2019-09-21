@@ -2,6 +2,7 @@ package com.st.order.test;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,11 +36,20 @@ public class AddOrderTests {
 	}
 	@Test
 	public void TestFindOrderByUserId() {
-		List<OrderVo> OrderVos = orderDao.findOrderByUserId(2);
-		for (Iterator iterator = OrderVos.iterator(); iterator.hasNext();) {
+		 List<OrderVo> list = orderDao.findOrderByUserId(2);
+		 for (Iterator iterator = list.iterator(); iterator.hasNext();) {
 			OrderVo orderVo = (OrderVo) iterator.next();
 			System.out.println(orderVo);
 		}
-		
 	}
+	
+	@Test
+	public void testLikeFind() {
+		 List<OrderVo> list = orderDao.likeFindOrder("手", 1);
+		 for (Iterator iterator = list.iterator(); iterator.hasNext();) {
+			OrderVo orderVo = (OrderVo) iterator.next();
+			System.out.println(orderVo);
+		}
+		 
+	 }
 }

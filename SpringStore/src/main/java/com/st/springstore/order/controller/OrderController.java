@@ -73,6 +73,7 @@ public class OrderController {
 	@RequestMapping("doFindAllOrder")
 	@ResponseBody
 	public JsonResult doFindAllOrder(Integer userId) {
+		System.out.println("userId:"+userId);
 		System.out.println("doFindAllOrder");
 		List<OrderVo> list = orderService.findAllOrder(userId);
 		return new JsonResult(list);

@@ -40,20 +40,20 @@
 	</update>
 	<!-- 模糊查询 -->
 	<select id="likeFindOrder"
-		resultType="com.st.springstore.order.pojo.Order">
-		select order_num,createdTime,name,valid,num,main_img,title,amount
-		from goods,order_list
-		where goodsId in 
+		resultType="com.st.springstore.common.vo.OrderVo">
+		select order_num as orderNum,o.createdTime,o.name,o.valid,o.num,g.main_img as img,g.title,o.amount
+		from goods g,order_list o
+		where g.goodsId in 
 		(select  goodsId from goods where  goodsId in
 		(select goodsId from order_list where userId=#{userId}) 
 		and title like  CONCAT(CONCAT('%',#{goodsName}),'%')) and
-		valid=0
+		o.valid=0 
 	</select>
 
 	<!-- 根据id查询订单信息 -->
 	<select id="findOrderByUserId" resultType="com.st.springstore.common.vo.OrderVo" >
-		select o.order_num,o.createdTime,o.name,o.valid,o.num,g.main_img,g.title,o.amount
+		select o.order_num as orderNum,o.createdTime,o.name,o.valid,o.num,g.main_img as img,g.title,o.amount
 		from goods g,order_list o
-		where o.goodsId=g.goodsId and o.userId=#{userId} and valid=0
+		where o.goodsId=g.goodsId and o.userId=#{userId} and valid=0 order by o.createdTime desc
 	</select>
 </mapper>

@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 public class OrderVo {
 	/** 订单号码 */
-	private long order_num;
+	private int orderNum;
 	/** 订单创建时间 */
 	private Date createdTime;
 	/** 收货人姓名 */
@@ -20,5 +20,5 @@ public class OrderVo {
 	/** 商品数量 */
 	private int num;
 	/** 商品图片*/
-	private String main_img;
+	private String img;
 }

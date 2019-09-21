@@ -200,18 +200,21 @@ Nostrud duis molestie at dolore.</p>
         function load() {
             console.log("load()");
             var userId =1;
-            doCreateTrs(userId);
+            doGetOrders(userId);
         }
 
         //根据用户的userId获取订单
         function doGetOrders(userId){
+        	var params={"userId":userId};
         	console.log("doGetOrders()");
             var url = "orders/doFindAllOrder"
-            $.getJSON(url,userId,function(result){
+            $.getJSON(url,params,function(result){
                 console.log(result);
                 initOrders(result.data);
 
             });
+            
+           
 
         }
 
@@ -220,22 +223,38 @@ Nostrud duis molestie at dolore.</p>
         	console.log("initOrders()");
             var box = $("#show_orders");
 
-            for(var order in data){ //order为一个orderVo对象
+            for(var i in data){ //order为一个orderVo对象
                 var table = $("<table></table>");
-                table.data("tableData",order[i]);
-                var trs =doCreateTrs(order[i]);
+            	
+                table.data("tableData",data[i]);
+                var trs =doCreateTrs(data[i]);
                 table.append(trs);
-                box.appendChild(table);
+                box.append(table);
+                box.append("<br>");
+                
             }
 
         }
         function doCreateTrs(order) {
         	console.log("doCreateTrs()");
-            var tr="<tr><span>order.order_num</span><span>order.createdTime</span></tr>"+
-                "<tr><td>order.main_img</td><td>order.title</td><td>order.num</td><td>order.name</td><td>order.pay_status</td></tr>"
-            return tr;
+            var trs="<tr><td>"+order.orderNum+"</td><td>"+order.createdTime+"<td><td></td><td></td></tr>"+
+                "<tr><td>"+order.img+"</td><td>"+order.title+"</td><td>"+order.num+"</td><td>"+order.name+"</td><td>"+order.pay_status+"</td></tr>"
+            return trs;
         }
     </script>
+    <style type="text/css">
+table{
+border: 1px solid #000;
+width:100%;
+border-collapse: collapse;
+}
+
+table td{
+border: 1px solid #000;
+border-color: red;
+}
+
+</style>
     <!-- END PAGE LEVEL JAVASCRIPTS -->
 </body>
 <!-- END BODY -->
