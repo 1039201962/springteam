@@ -16,7 +16,7 @@ public class FindOrderServiceTests {
 	private OrderService orderService;
 	@Test
 	public void findService() {
-		Order findOrder = orderService.findOrder(1);
+		Order findOrder = orderService.findOrder(1, 1);
 		System.out.println(findOrder);
 	}
 }

@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 import com.st.springstore.car.dao.CarDao;
 import com.st.springstore.car.pojo.Car;
 import com.st.springstore.common.exception.ServiceException;
+import com.st.springstore.common.vo.JsonResult;
 import com.st.springstore.common.vo.OrderVo;
+import com.st.springstore.common.vo.ReceivingVo;
 import com.st.springstore.goods.dao.GoodsDao;
 import com.st.springstore.goods.pojo.Goods;
 import com.st.springstore.goods.serviceImpl.GoodsServiceImpl;
@@ -40,9 +42,9 @@ public class OrderServiceImpl implements OrderService{
 	/**
 	 *查询用户的所有收货地址
 	 */
-	@Override
-	public  List<OrderVo> findOrderVos(Integer userId){
-		List<OrderVo> list = orderDao.selectInfo(userId);
+	
+	public   List<ReceivingVo> findreceivingInfos(Integer userId){
+		List<ReceivingVo> list = orderDao.selectInfo(userId);
 		return list;
 	}
 	
@@ -50,22 +52,36 @@ public class OrderServiceImpl implements OrderService{
 	 * 生成新订单,返回一个订单的id
 	 */
 	@Override
-	public int addOrder(Integer userId,Integer...goodsIds){
+	public int addOrder(Integer userId,Integer...goodsIds){	
+		//生成新订单
 		Order order = new Order();
-		OrderVo orderVo = null;
+		//生成订单编号
+		long orderId = OrderServiceImpl.orderId();
+		//收货信息
+		ReceivingVo receivingInfo = null;
+		//判断是否有商品可结算
 		if(goodsIds.length==0)
 			throw new ServiceException("没有商品可结算");
-		long orderId = OrderServiceImpl.orderId();
-		List<OrderVo> findOrderVos = findOrderVos(userId);
-		for (OrderVo orderVo1 : findOrderVos) {
-			if(orderVo1.getStatus()==0) {
-				orderVo=orderVo1;
+		//查询用户收货信息
+		List<ReceivingVo> findreceivingInfos = findreceivingInfos(userId);
+		//查询默认收货地址
+		for (ReceivingVo receivingInfo1 : findreceivingInfos) {
+			if(receivingInfo1.getStatus()==0) {
+				receivingInfo=receivingInfo1;
 			}
 		}
-		int Num=0;
+		
+		order.setUserId(userId);
+		order.setOrder_num(orderId);
+		order.setCreatedTime(new Date());
+		order.setAddr(receivingInfo.getAddr());
+		order.setName(receivingInfo.getName());
+		order.setMobile(receivingInfo.getMobile());
+		//总金额
 		double amount=0.0;
-		for (int i = 0; i < goodsIds.length; i++) {
+		for (int i = 0; i < goodsIds.length; i++) {		
 			Integer goodsId = goodsIds[i];
+			//查找商品
 			Goods goods = goodsDao.findGoodsById(goodsId);
 			Car car = carDao.findById(userId, goodsId);
 			//单个商品的数量
@@ -73,46 +89,30 @@ public class OrderServiceImpl implements OrderService{
 			//单个商品的价格
 			Double prize = goods.getPrice();
 			//累计金额
-			amount+=num*prize;
-			//累计数量
-			Num+=num;
-		}		
-		initOrderInfo(userId, order, orderVo, orderId, Num, amount);
-		System.out.println(order);
-		//往数据库写入相应的订单信息
-		int i = orderDao.insertOrder(order);
-		if(i==0) throw new ServiceException("订单生成异常");
-		return order.getId();
+			amount+=num*prize;	
+		}
+		for (int i = 0; i < goodsIds.length; i++) {
+			Integer goodsId = goodsIds[i];
+			Car car = carDao.findById(userId, goodsId);
+			//单个商品的数量
+			int num = car.getNum();
+			order.setAmount(amount);
+			order.setGoodsId(goodsId);
+			order.setNum(num);
+			orderDao.insertOrder(order);			
+		}
+		//从购物车移除对应的信息
+		carDao.delectCarByGoodsId(userId, goodsIds);
+		return 0;
+		
 	}
-	/**
-	 * 设置新订单的信息
-	 * @param userId
-	 * @param order
-	 * @param orderVo
-	 * @param orderId
-	 * @param Num
-	 * @param amount
-	 */
-	private void initOrderInfo(Integer userId, Order order, OrderVo orderVo, long orderId, int Num, double amount) {
-		order.setUserId(userId);//设置用户id
-		order.setOrder_num(orderId);//设置订单编号
-		order.setCreatedTime(new Date());//设置订单生成时间
-		order.setPay_status(0);//设置支付状态
-		order.setValid(0);//设置订单状态
-		order.setAddr(orderVo.getAddr());//设置订单默认收货地址
-		order.setMobile(orderVo.getMobile());//设置订单默认收货电话
-		order.setName(orderVo.getName());//设置订单收货人姓名
-		order.setAmount(amount);//设置订单总金额
-		order.setNum(Num); //设置商品的总数量
-	}
+	
 	/**
 	 * 根据订单id查询订单
 	 */
 	@Override
-	public Order findOrder(Integer orderId) {
+	public Order findOrder(Integer userId,Integer orderId) {
 		Order order = orderDao.findOrder(orderId);
-		if(order.getValid()==1)
-		throw new ServiceException("订单已经被删除");
 		return order;			
 	}
 	/**
@@ -127,9 +127,21 @@ public class OrderServiceImpl implements OrderService{
 	 * 根据商品名模糊查询订单
 	 */
 	@Override
-	public List<Order> likeFindOrder(String goodsName, Integer userId) {
-		List<Order> listOrder = orderDao.likeFindOrder(goodsName, userId);
+	public List<OrderVo> likeFindOrder(String goodsName, Integer userId) {
+		List<OrderVo> listOrder = orderDao.likeFindOrder(goodsName, userId);
 		return listOrder;
+	}		
+	/**
+	 * 根据用户id查询所有订单
+	 */
+	@Override
+	public List<OrderVo> findAllOrder(Integer userId) {
+		if(userId==null) throw new ServiceException("没有对应的用户信息");
+		List<OrderVo> orderVos = orderDao.findOrderByUserId(userId);
+		if(orderVos==null) throw new  ServiceException("没有对应订单信息");
+		/** */
+		return orderVos; 
 	}
+
 
 }
