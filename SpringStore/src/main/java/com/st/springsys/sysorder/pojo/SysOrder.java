@@ -1,11 +1,13 @@
 package com.st.springsys.sysorder.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import lombok.Data;
 
 @Data
-public class SysOrder {
+public class SysOrder implements Serializable{
+	private static final long serialVersionUID = 142993657813991043L;
 	/** 订单的id */
 	private int id;
 	/** 下单用户的id */

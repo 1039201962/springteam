@@ -9,7 +9,6 @@ import org.springframework.util.StringUtils;
 
 import com.st.springstore.common.exception.ServiceException;
 import com.st.springsys.sysmenu.dao.SysMenuDao;
-import com.st.springsys.sysmenu.dao.SysRoleMenuDao;
 import com.st.springsys.sysmenu.entity.SysMenu;
 import com.st.springsys.sysmenu.service.SysMenuService;
 import com.st.springsys.sysmenu.vo.Node;
@@ -22,9 +21,7 @@ public class SysMenuServiceImpl implements SysMenuService {
 	@Autowired
 	private SysMenuDao sysMenuDao;
 
-	@Autowired
-	private SysRoleMenuDao sysRoleMenuDao;
-
+	//重写修改
 	@Override
 	public int updateObject(SysMenu entity) {
 		// 合法验证
@@ -39,7 +36,8 @@ public class SysMenuServiceImpl implements SysMenuService {
 		// 返回数据
 		return rows;
 	}
-
+	
+	//重写新增
 	@Override
 	public int saveObject(SysMenu entity) {
 		// 合法验证
@@ -59,12 +57,14 @@ public class SysMenuServiceImpl implements SysMenuService {
 		// 返回结果
 		return rows;
 	}
-
+	
+	//重写树状图
 	@Override
 	public List<Node> findZtreeMenuNodes() {
 		return sysMenuDao.findZtreeMenuNodes();
 	}
-
+	
+	//重写删除
 	@Override
 	public int deleteObject(Integer id) {
 		// 合法验证
@@ -73,19 +73,21 @@ public class SysMenuServiceImpl implements SysMenuService {
 		int rowCount = sysMenuDao.getChildCount(id);
 		if (rowCount > 0)
 			throw new ServiceException("请先删除子菜单");
-		sysRoleMenuDao.deleteObjectsByMenuId(id);
 		int rows = sysMenuDao.deleteObject(id);
 		if (rows == 0)
 			throw new ServiceException("菜单可能不存在");
+		// 返回数据
 		return rows;
 	}
-
+	
+	//重写菜单页面数据呈现
 	@Override
 	public List<Map<String, Object>> findObjects() {
 		List<Map<String, Object>> list = sysMenuDao.findObjects();
 		// 合法验证
 		if (list.size() == 0)
 			throw new ServiceException("no records");
+		// 返回数据
 		return list;
 	}
 

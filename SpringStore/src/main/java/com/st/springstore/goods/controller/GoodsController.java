@@ -19,8 +19,8 @@ public class GoodsController {
 	 * @param pages
 	 * @return
 	 */
-	@RequestMapping("/dofindHotGoods")
-	public JsonResult dofindHotGoods(@PathVariable String pages) {
+	@RequestMapping("/doFindHotGoods")
+	public JsonResult dofindHotGoods() {
 		return new JsonResult(goodsService.fingHotGoods());
 	}
 	/**
