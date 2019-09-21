@@ -22,4 +22,11 @@ public class PageController {
 	public String doJumpPageResult() {
 		return "shop-search-result";
 	}
+	/**
+	 * 跳转到所有商品页
+	 */
+	@RequestMapping("/doJumpGoodsList")
+	public String doJumpGoodsList() {
+		return "shop-product-list";
+	}
 }

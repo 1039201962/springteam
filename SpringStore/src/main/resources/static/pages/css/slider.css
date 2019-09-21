@@ -97,60 +97,60 @@
 
 /* Carousel Item Background Images */
 .carousel-slider .carousel-item-one {
-    background: url(../../onepage/img/slider/slide1.jpg);
+    background: url(/onepage/img/slider/slide1.jpg);
     background-size: cover;
     background-position: center center;
 }
 
 .carousel-slider .carousel-item-two {
-    background: url(../../onepage/img/slider/slide2.jpg);
+    background: url(/onepage/img/slider/slide2.jpg);
     background-size: cover;
     background-position: center center;
 }
 
 .carousel-slider .carousel-item-three {
-    background: url(../../onepage/img/slider/slide3.jpg);
+    background: url(/onepage/img/slider/slide3.jpg);
     background-size: cover;
     background-position: center center;
 }
 
 .carousel-slider .carousel-item-four {
-    background: url(../../pages/img/shop-slider/slide1/bg.jpg);
+    background: url(/images/banner1.jpg);
     background-size: cover;
     background-position: center center;
 }
 
 .carousel-slider .carousel-item-five {
-    background: url(../../pages/img/shop-slider/slide2/bg.jpg);
+    background: url(/images/banner2.jpg);
     background-size: cover;
 }
 
 .carousel-slider .carousel-item-six {
-    background: url(../../pages/img/shop-slider/slide3/bg.jpg);
+    background: url(/images/banner5.jpg);
     background-size: cover;
     background-position: center center;
 }
 
 .carousel-slider .carousel-item-seven {
-    background: url(../../pages/img/shop-slider/slide4/bg.jpg);
+    background: url(/images/banner4.jpg);
     background-size: cover;
     background-position: center center;
 }
 
 .carousel-slider .carousel-item-eight {
-    background: url(../../pages/img/frontend-slider/bg9.jpg);
+    background: url(/pages/img/frontend-slider/bg9.jpg);
     background-size: cover;
     background-position: center center;
 }
 
 .carousel-slider .carousel-item-nine {
-    background: url(../../pages/img/frontend-slider/bg1.jpg);
+    background: url(/pages/img/frontend-slider/bg1.jpg);
     background-size: cover;
     background-position: center center;
 }
 
 .carousel-slider .carousel-item-ten {
-    background: url(../../pages/img/frontend-slider/bg2.jpg);
+    background: url(/pages/img/frontend-slider/bg2.jpg);
     background-size: cover;
     background-position: center center;
 }

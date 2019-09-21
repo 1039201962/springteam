@@ -15,8 +15,14 @@ spring:
   thymeleaf:
     prefix: classpath:/temp/pages/
     suffix: .html
+    cache: true
   aop:
     proxy-target-class: false
+  devtools:
+    restart:
+      enabled: true   
+      additional-paths:
+      - src/main/java
 
 
 #mybatis
