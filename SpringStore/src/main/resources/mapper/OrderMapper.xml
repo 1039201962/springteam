@@ -43,7 +43,7 @@
 		resultType="com.st.springstore.order.pojo.Order">
 		select order_num,createdTime,name,valid,num,main_img,title,amount
 		from goods,order_list
-		where goodsId in 
+		where goodsId in
 		(select  goodsId from goods where  goodsId in
 		(select goodsId from order_list where userId=#{userId}) 
 		and title like  CONCAT(CONCAT('%',#{goodsName}),'%')) and
