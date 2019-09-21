@@ -34,8 +34,8 @@ public class GoodsServiceImpl implements GoodsService{
 		//判断参数
 		if(!StringUtils.isEmpty(title) && categoryId != null)
 			throw new IllegalArgumentException("非法的参数");
-		int pageSize = 10;//每页显示10条数据
-		int pageIndex = (pageCurrent == null)?0:(pageCurrent-1)*10;
+		int pageSize = 9;//每页显示10条数据
+		int pageIndex = (pageCurrent == null)?0:(pageCurrent-1)*pageSize;
 		List<Goods> records = goodsDao.findGoods(title,categoryId,orderBy, isDesc, pageIndex, pageSize);
 		//查询总条数
 		int rowCount = goodsDao.getGoodsRows(title);

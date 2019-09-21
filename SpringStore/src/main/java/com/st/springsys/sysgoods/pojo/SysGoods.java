@@ -1,4 +1,4 @@
-package com.st.springstore.goods.pojo;
+package com.st.springsys.sysgoods.pojo;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -6,12 +6,13 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
-public class Goods implements Serializable{
+public class SysGoods implements Serializable{
+	private static final long serialVersionUID = -4484894467196300994L;
 	private int id ;
 	private String title;
 	private double price;
 	private String descript;
-	private int goods_num;
+	private int goodsId;
 	private String main_img;
 	private String des_img;
 	/** 创建时间 */
@@ -22,8 +23,8 @@ public class Goods implements Serializable{
 	private int reCommend_status;	
 	/** 销量 */
 	private int sale_num;
+	/**分类*/
+	private String categoryId;
 	/** 是否上架 */
 	private int onSale;
-	/**分类信息ID*/
-	private int categoryId;
 }
