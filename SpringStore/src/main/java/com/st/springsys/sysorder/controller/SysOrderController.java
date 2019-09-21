@@ -11,7 +11,7 @@ import com.st.springsys.sysorder.pojo.SysOrder;
 import com.st.springsys.sysorder.service.SysOrderService;
 
 @RestController
-@RequestMapping("/sysorder/")
+@RequestMapping("/sysOrder/")
 public class SysOrderController {
 	
 	@Autowired
