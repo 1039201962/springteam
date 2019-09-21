@@ -6,6 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class PageController {
+	//跳转到登录页面
+//	@RequestMapping("/doLoginUI")
+//	public String doLoginUI(){
+//			return "sys-login";
+//	}
 	@RequestMapping("/index")
 	public String index() {
 		return "index";

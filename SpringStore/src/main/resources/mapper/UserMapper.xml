@@ -41,7 +41,7 @@
 		select pay_password from user where id=#{userId}
 	</select>
 	<!-- 用户查询 -->
-	<select id="selectUser"
+	<select id="findUserByUserName"
 			resultType="com.st.springstore.user.pojo.User">
 		select * from user 
 		where username = #{username} 

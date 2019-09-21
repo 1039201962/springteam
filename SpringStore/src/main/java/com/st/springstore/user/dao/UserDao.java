@@ -5,7 +5,6 @@ import org.apache.ibatis.annotations.Mapper;
 import com.st.springstore.user.pojo.User;
 
 @Mapper
-
 public interface UserDao {
 	/**
 	 *  注册新用户
@@ -35,6 +34,6 @@ public interface UserDao {
 	 * @param userName
 	 * @return
 	 */
-	User selectUser(String userName);
+	User findUserByUserName(String username);
 	
 }

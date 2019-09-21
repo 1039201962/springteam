@@ -80,9 +80,9 @@
     <div class="main">
       <div class="container">
         <ul class="breadcrumb">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="">Store</a></li>
-            <li class="active">Checkout</li>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="">商城</a></li>
+            <li class="active">查看</li>
         </ul>
         <!-- BEGIN SIDEBAR & CONTENT -->
         <div class="row margin-bottom-40">
@@ -97,45 +97,45 @@
                 <div class="panel-heading">
                   <h2 class="panel-title">
                     <a data-toggle="collapse" data-parent="#checkout-page" href="#checkout-content" class="accordion-toggle">
-                      Step 1: Checkout Options
+                       	步骤 1: 结账 选项
                     </a>
                   </h2>
                 </div>
                 <div id="checkout-content" class="panel-collapse collapse in">
                   <div class="panel-body row">
                     <div class="col-md-6 col-sm-6">
-                      <h3>New Customer</h3>
-                      <p>Checkout Options:</p>
+                      <h3>新客户</h3>
+                      <p>结账方式:</p>
                       <div class="radio-list">
                         <label>
-                          <input type="radio" name="account"  value="register"> Register Account
+                          <input type="radio" name="account"  value="register"> 注册账号
                         </label>
                         <label>
-                          <input type="radio" name="account"  value="guest"> Guest Checkout
+                          <input type="radio" name="account"  value="guest"> 访客结账
                         </label> 
                       </div>
-                      <p>By creating an account you will be able to shop faster, be up to date on an order's status, and keep track of the orders you have previously made.</p>
-                      <button class="btn btn-primary" type="submit" data-toggle="collapse" data-parent="#checkout-page" data-target="#payment-address-content">Continue</button>
+                      <p>通过创建帐户，您将能够加快购物速度，了解订单状态并跟踪以前的订单。</p>
+                      <button class="btn btn-primary" type="submit" data-toggle="collapse" data-parent="#checkout-page" data-target="#payment-address-content">继续</button>
                     </div>
                     <div class="col-md-6 col-sm-6">
-                      <h3>Returning Customer</h3>
-                      <p>I am a returning customer.</p>
+                      <h3>回头客</h3>
+                      <p>我是老客户。</p>
                       <form role="form" action="#"> 
                         <div class="form-group">
-                          <label for="userName-login">User Name</label>
+                          <label for="userName-login">用户名</label>
                           <input type="text" id="userName" class="form-control">
                         </div>
                         <div class="form-group">
-                          <label for="password-login">Password</label>
+                          <label for="password-login">密码</label>
                           <input type="password" id="password-login" class="form-control">
                         </div>
-                        <a href="javascript:;">Forgotten Password?</a>
+                        <a href="javascript:;">忘记密码?</a>
                         <div class="padding-top-20">                  
-                          <button class="btn btn-primary" type="submit">Login</button>
+                          <button class="btn btn-primary" type="submit">登录</button>
                         </div>
                         <hr>
                         <div class="login-socio">
-                          <p class="text-muted">or login using:</p>
+                          <p class="text-muted">也可以用以下方式登录:</p>
                           <ul class="social-icons">
                             <li><a href="javascript:;" data-original-title="facebook" class="facebook" title="facebook"></a></li>
                             <li><a href="javascript:;" data-original-title="Twitter" class="twitter" title="Twitter"></a></li>
@@ -155,7 +155,7 @@
                 <div class="panel-heading">
                   <h2 class="panel-title">
                     <a data-toggle="collapse" data-parent="#checkout-page" href="#payment-address-content" class="accordion-toggle">
-                      Step 2: Account &amp; Billing Details
+                      	步骤2：账号和账单明细 
                     </a>
                   </h2>
                 </div>
@@ -163,13 +163,13 @@
                   <div class="panel-body row">
                		
                     <div class="col-md-6 col-sm-6">
-                      <h3>Your Personal Details</h3>
+                      <h3>个人信息</h3>
                     <!--   <div class="form-group">
                         <label for="firstname">First Name <span class="require">*</span></label>
                         <input type="text" id="firstname" name="firstname">
                       </div> -->
                       <div class="form-group">
-                        <label for="username">User Name <span class="require">*</span></label>
+                        <label for="username">用户名 <span class="require">*</span></label>
                         <input type="text" id="userName" class="form-control" name="userName">
                       </div>
                       <div class="form-group">
@@ -177,7 +177,7 @@
                         <input type="text" id="email" class="form-control" name="email">
                       </div>
                       <div class="form-group">
-                        <label for="mobile">Telephone <span class="require">*</span></label>
+                        <label for="mobile">电话 <span class="require">*</span></label>
                         <input type="text" id="telephone" class="form-control" name="mobile">
                       </div>
                       <!-- <div class="form-group">
@@ -185,43 +185,43 @@
                         <input type="text" id="fax" class="form-control">
                       </div> -->
 
-                      <h3>Your Password</h3>
+                      <h3>设置密码</h3>
                       <div class="form-group">
-                        <label for="password">Password <span class="require">*</span></label>
+                        <label for="password">密码 <span class="require">*</span></label>
                         <input type="password" id="password" class="form-control" name="password">
                       </div>
                       <div class="form-group">
-                        <label for="password-confirm">Password Confirm <span class="require">*</span></label>
+                        <label for="password-confirm">再次确认密码 <span class="require">*</span></label>
                         <input type="text" id="password-confirm" class="form-control" name="passwordConfirm">
                       </div>
                       
                     </div>
                     <div class="col-md-6 col-sm-6">
-                      <h3>Your Address</h3>
+                      <h3>地址管理 </h3>
                       <!-- <div class="form-group">
                         <label for="company">Company</label>
                         <input type="text" id="company" class="form-control">
                       </div> -->
                       <div class="form-group">
-                        <label for="address1">Address 1</label>
+                        <label for="address1">地址 1</label>
                         <input type="text" id="address1" class="form-control" name="address1">
                       </div>
                       <div class="form-group">
-                        <label for="address2">Address 2</label>
+                        <label for="address2">地址 2</label>
                         <input type="text" id="address2" class="form-control" name="address2">
                       </div>
                       <div class="form-group">
-                        <label for="city">City <span class="require">*</span></label>
+                        <label for="city">所在城市 <span class="require">*</span></label>
                         <input type="text" id="city" class="form-control" name="city">
                       </div>
                       <div class="form-group">
-                        <label for="post-code">Post Code <span class="require">*</span></label>
+                        <label for="post-code">邮政编码 <span class="require">*</span></label>
                         <input type="text" id="post-code" class="form-control" name="postCode">
                       </div>
                       <div class="form-group">
-                        <label for="country">Country <span class="require">*</span></label>
+                        <label for="country">国家 <span class="require">*</span></label>
                         <select class="form-control input-sm" id="country" name="country">
-                          <option value=""> --- Please Select --- </option>
+                          <option value=""> --- 请选择 --- </option>
                           <option value="243">China</option>
                           <option value="244">Aaland Islands</option>
                           <option value="1">Afghanistan</option>
@@ -229,9 +229,9 @@
                         </select>
                       </div>
                       <div class="form-group">
-                        <label for="region-state">Region/State <span class="require">*</span></label>
+                        <label for="region-state">省市/地区 <span class="require">*</span></label>
                         <select class="form-control input-sm" id="region-state" name="regionState">
-                          <option value=""> --- Please Select --- </option>
+                          <option value=""> --- 请选择 --- </option>
                           <option value="3508">mainland</option>
                           <option value="3509">Tibet</option>
                           <option value="3510">Macao</option>
@@ -248,22 +248,22 @@
                     <div class="col-md-12">                      
                       <div class="checkbox">
                         <label>
-                          <input type="checkbox"> I wish to subscribe to the OXY newsletter. 
+                          <input type="checkbox"> 我想订阅推荐讯息。 
                         </label>
                       </div>
                       <div class="checkbox">
                         <label>
-                          <input type="checkbox" checked="checked"> My delivery and billing addresses are the same.
+                          <input type="checkbox" checked="checked"> 我的送货地址和帐单地址是一样的。
                         </label>
                       </div>
                       
                       <button class="btn btn-primary  pull-right" type="submit" 
                       data-toggle="collapse" data-parent="#checkout-page" 
                       data-target="#confirm-content" 
-                      id="button-payment-address">Continue</button>
+                      id="button-payment-address">继续</button>
                       <div class="checkbox pull-right">
                         <label>
-                          <input type="checkbox"> I have read and agree to the <a title="Privacy Policy" href="javascript:;">Privacy Policy</a> &nbsp;&nbsp;&nbsp; 
+                          <input type="checkbox"> 我已经阅读并且同意  <a title="Privacy Policy" href="javascript:;">隐私政策</a> &nbsp;&nbsp;&nbsp; 
                         </label>
                       </div>                        
                     </div>
@@ -279,7 +279,7 @@
                 <div class="panel-heading">
                   <h2 class="panel-title">
                     <a data-toggle="collapse" data-parent="#checkout-page" href="#confirm-content" class="accordion-toggle">
-                      Step 3: Confirm Order
+                    	  步骤 3: 确认订单
                     </a>
                   </h2>
                 </div>
@@ -289,16 +289,16 @@
                       <div class="table-wrapper-responsive">
                       <table>
                         <tr>
-                          <th class="checkout-image">Image</th>
-                          <th class="checkout-description">Description</th>
-                          <th class="checkout-model">Model</th>
-                          <th class="checkout-quantity">Quantity</th>
-                          <th class="checkout-price">Price</th>
-                          <th class="checkout-total">Total</th>
+                          <th class="checkout-image">图片</th>
+                          <th class="checkout-description">描述</th>
+                          <th class="checkout-model">模型</th>
+                          <th class="checkout-quantity">数量</th>
+                          <th class="checkout-price">价格</th>
+                          <th class="checkout-total">共计</th>
                         </tr>
                         <tr>
                           <td class="checkout-image">
-                            <a href="javascript:;"><img src="pages/img/products/model3.jpg" alt="Berry Lace Dress"></a>
+                            <a href="javascript:;"><img src="/pages/img/products/model3.jpg" alt="Berry Lace Dress"></a>
                           </td>
                           <td class="checkout-description">
                             <h3><a href="javascript:;">Cool green dress with red bell</a></h3>
@@ -312,7 +312,7 @@
                         </tr>
                         <tr>
                           <td class="checkout-image">
-                            <a href="javascript:;"><img src="pages/img/products/model4.jpg" alt="Berry Lace Dress"></a>
+                            <a href="javascript:;"><img src="/pages/img/products/model4.jpg" alt="Berry Lace Dress"></a>
                           </td>
                           <td class="checkout-description">
                             <h3><a href="javascript:;">Cool green dress with red bell</a></h3>
@@ -329,15 +329,15 @@
                       <div class="checkout-total-block">
                         <ul>
                           <li>
-                            <em>Sub total</em>
+                            <em>小计</em>
                             <strong class="price"><span>$</span>47.00</strong>
                           </li>
                           <li>
-                            <em>Shipping cost</em>
+                            <em>运输费用 </em>
                             <strong class="price"><span>$</span>3.00</strong>
                           </li>
                           <li>
-                            <em>Eco Tax (-2.00)</em>
+                            <em>生态税 (-2.00)</em>
                             <strong class="price"><span>$</span>3.00</strong>
                           </li>
                           <li>
@@ -345,14 +345,14 @@
                             <strong class="price"><span>$</span>3.00</strong>
                           </li>
                           <li class="checkout-total-price">
-                            <em>Total</em>
+                            <em>共计</em>
                             <strong class="price"><span>$</span>56.00</strong>
                           </li>
                         </ul>
                       </div>
                       <div class="clearfix"></div>
-                      <button class="btn btn-primary pull-right" type="submit" id="button-confirm">Confirm Order</button>
-                      <button type="button" class="btn btn-default pull-right margin-right-20">Cancel</button>
+                      <button class="btn btn-primary pull-right" type="submit" id="button-confirm">确认订单 </button>
+                      <button type="button" class="btn btn-default pull-right margin-right-20">取消</button>
                     </div>
                   </div>
                 </div>
