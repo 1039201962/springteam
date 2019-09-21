@@ -47,7 +47,11 @@ public class CarServiceTest {
 	}
 	@Test
 	public void test5CarService() {
-		PageObject<CarGoodsVo> PageObjects = carService.findPageObjects(1, 2);
+		carService.delectCar(1,1);
+	}
+	@Test
+	public void test6CarService() {
+		PageObject<CarGoodsVo> PageObjects = carService.findPageObjects(1, 1);
 		System.out.println(PageObjects.getPageCount());
 		System.out.println(PageObjects.getPageCurrent());
 		System.out.println(PageObjects.getPageSize());

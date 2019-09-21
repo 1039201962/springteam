@@ -53,7 +53,7 @@ public class OrderServiceImpl implements OrderService{
 	public int addOrder(Integer userId,Integer...goodsIds){
 		Order order = new Order();
 		OrderVo orderVo = null;
-		if(goodsIds.length==0)
+		if(goodsIds == null || goodsIds.length==0)
 			throw new ServiceException("没有商品可结算");
 		long orderId = OrderServiceImpl.orderId();
 		List<OrderVo> findOrderVos = findOrderVos(userId);
