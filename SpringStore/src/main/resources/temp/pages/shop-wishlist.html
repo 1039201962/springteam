@@ -80,7 +80,21 @@
               <div class="goods-data clearfix">
                 <div class="table-wrapper-responsive" id="show_orders">
                 <!-- 该区域展示订单 -->
-                
+                <table>
+                	<thead>
+						<tr>
+							<th>订单编号</th>
+							<th>订单时间</th>
+							<th>商品名称</th>
+							<th>商品数目</th>
+							<th>商品总价</th>
+							<th>收货人</th>
+							<th>订单状态</th>
+							<th>操作</th>
+						</tr>
+					</thead> 
+					<tbody id="tbodyId"></tbody>             
+                </table>
                 <!-- 该区域展示订单 -->
                 </div>
               </div>
@@ -188,7 +202,7 @@ Nostrud duis molestie at dolore.</p>
             $("#header").load("/header");
             $("#footer").load("/footer");
         });
-<<<<<<< HEAD
+
         
         // 展示订单数据的回显
         function showOrder(){
@@ -224,27 +238,29 @@ Nostrud duis molestie at dolore.</p>
         //使用订单集合的信息来初始化订单页面的订单
         function initOrders(data) {
         	console.log("initOrders()");
-            var box = $("#show_orders");
-
-            for(var i in data){ //order为一个orderVo对象
-                var table = $("<table></table>");
-            	
-                table.data("tableData",data[i]);
+            var tbody = $("#tbodyId");
+            for(var i in data){ //order为一个orderVo对象          
+            	console.log("数据"+i+data[i]);
+                tbody.data("tdata",data[i]);
                 var trs =doCreateTrs(data[i]);
-                table.append(trs);
-                box.append(table);
-                box.append("<br>");
-                
+                tbody.append(trs);    
             }
-
         }
         function doCreateTrs(order) {
         	console.log("doCreateTrs()");
-            var trs="<tr><td>"+order.orderNum+"</td><td>"+order.createdTime+"<td><td></td><td></td></tr>"+
-                "<tr><td>"+order.img+"</td><td>"+order.title+"</td><td>"+order.num+"</td><td>"+order.name+"</td><td>"+order.pay_status+"</td></tr>"
+        	var status="待支付";
+        	if(order.payStatus==1){
+        		status="已支付";
+        	}if(order.payStatus==2){
+        		status="已超时";
+        	}
+            var trs="<tr><td>"+order.orderNum+"</td><td>"+order.createdTime
+            +"</td><td>"+order.title+"</td><td>"+order.num+"</td><td>"+order.amount+
+            "</td><td>"+order.name+"</td><td>"+status+"</td><td><input type='button' id="+order.orderNum+" value='删除' ><input type='button' id="+order.orderNum+" value='支付' ></td></tr>"
             return trs;
         }
     </script>
+    
     <style type="text/css">
 table{
 border: 1px solid #000;
@@ -255,24 +271,39 @@ margin:0;
 }
 
 table td{
-border: 1px solid #000;
-border-color: red;
+border: 1px solid 	#E1FFFF;
+border-color: #E1FFFF;
 }
 table tr td:nth-of-type(1){
-	width:300px;
+	width:120px;
 }
 table tr td:nth-of-type(2){
-	width:300px;
-}
-table tr td:nth-of-type(3){
-	width:50px;
-}
-table tr td:nth-of-type(4){
 	width:150px;
 }
+table tr td:nth-of-type(3){
+	width:100px;
+}
+table tr td:nth-of-type(4){
+	width:100px;
+}
 table tr td:nth-of-type(5){
-	width:50px;
+	width:100px;
 	
+}
+table tr td:nth-of-type(6){
+	width:100px;
+	
+}
+table tr td:nth-of-type(7){
+	width:100px;
+	
+}
+table tr td:nth-of-type(8){
+	width:150px;
+	
+}
+table{
+	text-align:center;
 }
 
 </style>
