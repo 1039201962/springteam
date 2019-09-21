@@ -31,4 +31,22 @@ public class testMenu {
 		list.forEach(System.out::println);
 	}
 
+	@Test
+	public void testDeleteObject() {
+		int rows = sysMenuService.deleteObject(115);
+		System.out.println(rows);
+	}
+	
+	@Test
+	public void testUpdateObject() {
+		//int rows = sysMenuService.updateObject(entity);
+		//System.out.println(rows);
+	}
+	
+	@Test
+	public void testSaveObject() {
+		//int rows = sysMenuService.saveObject(entity);
+		//System.out.println(rows);
+	}
+	
 }
