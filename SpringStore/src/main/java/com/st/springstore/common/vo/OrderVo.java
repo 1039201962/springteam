@@ -15,6 +15,8 @@ public class OrderVo {
 	private int pay_status;
 	/** 商品描述*/
 	private String title;
+	/** 订单总价 */
+	private double amount;
 	/** 商品数量 */
 	private int num;
 	/** 商品图片*/

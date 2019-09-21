@@ -32,7 +32,7 @@ public interface OrderService {
 	 * @param userId
 	 * @return
 	 */
-	List<Order> likeFindOrder(String goodsName,Integer userId);
+	List<OrderVo> likeFindOrder(String goodsName,Integer userId);
 	/**
 	 * 通过用户id查询所有订单
 	 * @param userId
@@ -41,6 +41,4 @@ public interface OrderService {
 	List<OrderVo> findAllOrder(Integer userId);
 	
 	
-
-
 }

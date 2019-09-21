@@ -62,7 +62,7 @@ public class OrderController {
 	@RequestMapping("doLikeFindOrder")
 	@ResponseBody
 	public JsonResult doLikeFindOrder(String goodsName,Integer userId) {
-		List<Order> findOrder = orderService.likeFindOrder(goodsName, userId);
+		List<OrderVo> findOrder = orderService.likeFindOrder(goodsName, userId);
 		return new JsonResult(findOrder);
 	}
 	/**

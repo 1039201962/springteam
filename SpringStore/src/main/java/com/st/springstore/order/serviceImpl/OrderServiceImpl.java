@@ -127,8 +127,8 @@ public class OrderServiceImpl implements OrderService{
 	 * 根据商品名模糊查询订单
 	 */
 	@Override
-	public List<Order> likeFindOrder(String goodsName, Integer userId) {
-		List<Order> listOrder = orderDao.likeFindOrder(goodsName, userId);
+	public List<OrderVo> likeFindOrder(String goodsName, Integer userId) {
+		List<OrderVo> listOrder = orderDao.likeFindOrder(goodsName, userId);
 		return listOrder;
 	}		
 	/**
@@ -139,6 +139,7 @@ public class OrderServiceImpl implements OrderService{
 		if(userId==null) throw new ServiceException("没有对应的用户信息");
 		List<OrderVo> orderVos = orderDao.findOrderByUserId(userId);
 		if(orderVos==null) throw new  ServiceException("没有对应订单信息");
+		/** */
 		return orderVos; 
 	}
 

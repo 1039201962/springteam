@@ -35,7 +35,7 @@ public class AddOrderTests {
 	}
 	@Test
 	public void TestFindOrderByUserId() {
-		List<OrderVo> OrderVos = orderDao.findOrderByUserId(1);
+		List<OrderVo> OrderVos = orderDao.findOrderByUserId(2);
 		for (Iterator iterator = OrderVos.iterator(); iterator.hasNext();) {
 			OrderVo orderVo = (OrderVo) iterator.next();
 			System.out.println(orderVo);

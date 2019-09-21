@@ -31,15 +31,16 @@ public class UserServiceImpl implements UserService{
 	/**注册新用户*/
 	@Override
 	public int userRegister(User user) {
-		//校验
+		//1、校验
 		if(user==null)
-    		throw new ServiceException("保存对象不能为空");
+    		throw new ServiceException("请填写注册信息");
     	if(StringUtils.isEmpty(user.getUsername()))
     		throw new ServiceException("用户名不能为空");
-//    	if(user.getPassword() != passwordConfirm)
-//    		throw new ServiceException("密码不能为空");
-//		//保存自身信息
-//		userDao.userRegister(user);
+    	if(user.getPassword() == null)
+    		throw new ServiceException("密码不能为空");
+		//2、保存自身信息
+    	//2.1、给密码加盐值
+		userDao.userRegister(user);
 		return 0;
 	}
 }

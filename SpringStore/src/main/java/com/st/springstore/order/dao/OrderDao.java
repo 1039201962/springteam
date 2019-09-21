@@ -38,7 +38,7 @@ public interface OrderDao {
 	 * @param goodsName
 	 * @return
 	 */
-	List<Order> likeFindOrder(String goodsName,Integer userId);
+	List<OrderVo> likeFindOrder(String goodsName,Integer userId);
 	
 	/**
 	 * 通过用户id查询订单信息

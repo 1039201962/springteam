@@ -18,7 +18,7 @@ public class PageObject<T> implements Serializable{
 	/**当前页码值*/
 	private Integer pageCurrent;
 	/**页面大小*/
-	private Integer pageSize=10;
+	private Integer pageSize=5;
 	public PageObject() {
 	}
 	public PageObject(Integer rowCount, List<T> records,Integer pageCurrent, Integer pageSize) {

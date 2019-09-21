@@ -5,10 +5,25 @@
 <mapper namespace="com.st.springstore.car.dao.CarDao">
   <!-- 根据用户id和商品id查询购物车中 -->
   <select id="findById" 
-  resultType="com.st.springstore.car.pojo.Car">
+   resultType="com.st.springstore.car.pojo.Car">
    select * from shop_cart
    where userId=#{userId} and goodsId=#{goodsId}
   </select>
+  
+  <!-- 查询用户选中的商品在购物车中的数量 -->
+  <select id="findByGoodsId"
+   resultType="com.st.springstore.car.pojo.Car">
+   select * from shop_cart
+   where userId=#{userId} and goodsId in
+       <foreach collection="goodsIds"
+                open="("
+                close=")"
+                separator=","
+                item="id">
+              #{id}
+       </foreach>
+  </select>
+  
   <!-- 添加到购物车列表 -->
   <insert id="addCar" 
    parameterType="com.st.springstore.car.pojo.Car">
@@ -17,18 +32,21 @@
    values
    (now(),#{userId},#{goodsId},#{num})
   </insert>
+ 
   <!-- 修改购物车商品商品信息(数量) -->
   <update id="updateCar">
    update shop_cart set
     num=#{num}
     where userId=#{userId} and goodsId=#{goodsId}
   </update>
+  
   <!-- 根据用户Id查询出购车列表中此用户的所有加入到购物车的商品信息 -->
   <select id="findByUserId" 
    resultType="com.st.springstore.car.pojo.Car">
    select goodsId,num from shop_cart
    where userId=#{userId}
   </select>
+  
   <!-- 删除购物车中对应的商品 -->
   <delete id="delectCarByGoodsId">
    delete from shop_cart
@@ -42,4 +60,26 @@
               #{id}
        </foreach>
   </delete>
+  <!-- 总记录数 -->
+  <select id="getRowCount" resultType="int">
+       select count(*)
+       from shop_cart
+       where userId=#{userId}
+   </select>
+   <!-- resultType定义一行记录要映射的结果类型    分页查询数据 -->
+   <select id="findPageObjects"
+           resultType="com.st.springstore.car.pojo.Car">
+         select *
+         from shop_cart
+         <include refid="queryWhereId"/>
+         order by createdTime desc
+         limit #{startIndex},#{pageSize}
+   </select>
+   <sql id="queryWhereId">
+       <where>
+           <if test="userId!=null">
+           userId=#{userId}
+           </if>
+       </where>
+   </sql>
 </mapper>
