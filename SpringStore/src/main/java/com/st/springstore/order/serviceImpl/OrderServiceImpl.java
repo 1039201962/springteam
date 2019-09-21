@@ -60,7 +60,7 @@ public class OrderServiceImpl implements OrderService{
 		//收货信息
 		ReceivingVo receivingInfo = null;
 		//判断是否有商品可结算
-		if(goodsIds.length==0)
+		if(goodsIds==null||goodsIds.length==0)
 			throw new ServiceException("没有商品可结算");
 		//查询用户收货信息
 		List<ReceivingVo> findreceivingInfos = findreceivingInfos(userId);

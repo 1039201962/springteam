@@ -46,6 +46,4 @@ public interface OrderDao {
 	 */
 	List<OrderVo> findOrderByUserId(Integer userId);
 	
-	long fingOrderNum(Integer orderId);
-	
 }
