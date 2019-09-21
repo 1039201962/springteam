@@ -41,8 +41,7 @@
 	
   <!--根据id删除订单  -->
   <update id="deleteSysOrder">
-		update order_list
-		set valid=1
+		delete from order_list
 		where id in
 		<foreach collection="array" open="(" close=")" separator=","
 			item="orderId">
