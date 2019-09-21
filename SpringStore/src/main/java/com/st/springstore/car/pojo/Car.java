@@ -8,6 +8,10 @@ import lombok.Data;
 @Data
 public class Car implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7369742005419284502L;
 	private int id;
 	private Date createdTime;
 	private int userId;

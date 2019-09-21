@@ -10,18 +10,19 @@ import org.apache.ibatis.annotations.Select;
 import com.st.springsys.sysmenu.entity.SysMenu;
 import com.st.springsys.sysmenu.vo.Node;
 
+/*
+ * 将对象持久化到数据库
+ */
 @Mapper
 public interface SysMenuDao {
-	/*
-	 * 将对象持久化到数据库
-	 */
+	//添加
 	int insertObject(SysMenu entity);
-
+	//修改
 	int updateObject(SysMenu entity);
-	
+	//树状图：菜单编辑页面上级菜单呈现
 	@Select("select id,name,parent_id,permission from menus")
 	List<Node> findZtreeMenuNodes();
-
+	//删除
 	@Delete("delete from menus where id=#{id}")
 	int deleteObject(Integer id);
 

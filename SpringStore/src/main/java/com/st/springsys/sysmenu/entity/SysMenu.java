@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class SysMenu implements Serializable{
 	/**
-	 * 
+	 * 封装实体类对象
 	 */
 	private static final long serialVersionUID = 4711744510605082146L;
 	private Integer id;

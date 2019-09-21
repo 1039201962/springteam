@@ -7,6 +7,11 @@ import com.st.springsys.sysorder.pojo.SysOrder;
 
 public interface SysOrderService {
 	/**
+	 * 修改订单信息
+	 * @return
+	 */
+	int updateSysOrder(SysOrder sysOrder);
+	/**
 	 * 通过订单id删除订单
 	 * @param orderIds
 	 * @return

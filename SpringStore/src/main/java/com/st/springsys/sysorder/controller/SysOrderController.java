@@ -7,13 +7,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.st.springstore.common.vo.JsonResult;
+import com.st.springsys.sysorder.pojo.SysOrder;
 import com.st.springsys.sysorder.service.SysOrderService;
 
 @RestController
+@RequestMapping("/sysOrder/")
 public class SysOrderController {
 	
 	@Autowired
 	private SysOrderService sysOrderService;
+	
+	/**修改订单*/
+	 @RequestMapping("doUpdateSysOrder")
+	 public JsonResult doUpdateSysOrder(SysOrder sysOrder) {
+		 sysOrderService.updateSysOrder(sysOrder);
+		 return new JsonResult("update ok");
+	 }
 	
 	/**删除订单*/
 	@RequestMapping("doDeleteSysOrder")
@@ -23,8 +32,8 @@ public class SysOrderController {
 	}
 	
 	/**根据用户搜索*/
-	@RequestMapping("doFindOrderById")
-	public JsonResult doFindOrderById(String name) {
+	@RequestMapping("doFindOrderByName")
+	public JsonResult doFindOrderByName(String name) {
 		return new JsonResult(sysOrderService.findOrderByName(name));
 	}
 	

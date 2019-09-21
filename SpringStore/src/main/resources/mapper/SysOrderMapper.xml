@@ -4,10 +4,44 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.st.springsys.sysorder.dao.SysOrderDao">
   
+  <!--修改订单信息  -->
+  <update id="updateSysObject"
+		parameterType="com.st.springsys.sysorder.pojo.SysOrder">
+		update order_list
+		<set>
+			<if test="num!=null and num!=''">
+				num=#{num},
+			</if>
+			<if test="pay_status!=null and pay_status!=''">
+				pay_status=#{pay_status},
+			</if>
+			<if test="mobile!=null and mobile!=''">
+				mobile=#{mobile},
+			</if>
+			<if test="name!=null and name!=''">
+				name=#{name},
+			</if>
+			<if test="addr!=null and addr!=''">
+				addr=#{addr},
+			</if>
+			amount=#{amount},valid=#{valid},createdTime=now()
+		</set>
+		where id=#{id}
+	</update>
+	
+  <!--存入订单信息  -->
+  <insert id="insertSysOrder"
+		parameterType="com.st.springsys.sysorder.pojo.SysOrder"> 
+		insert into order_list 
+		(id,userId,order_num,goodsId,num,createdTime,pay_status,amount,valid,addr,mobile,name)
+		values
+		(null,#{userId},#{order_num},#{goodsId},#{num},
+		now(),#{pay_status},#{amount},#{valid},#{addr},#{mobile},#{name})
+	</insert>
+	
   <!--根据id删除订单  -->
   <update id="deleteSysOrder">
-		update order_list
-		set valid=1
+		delete from order_list
 		where id in
 		<foreach collection="array" open="(" close=")" separator=","
 			item="orderId">
@@ -49,7 +83,7 @@
          <include refid="queryWhereId"/>
    </select>
    <!-- 查询当前页记录，resultType的值为一行记录要映射的结果类型 -->
-   <select id="findPageObjects"
+   <select id="findPageObject"
            resultType="com.st.springsys.sysorder.pojo.SysOrder">
            select *
            <include refid="queryWhereId"/>

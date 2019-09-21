@@ -10,6 +10,13 @@ import com.st.springsys.sysorder.pojo.SysOrder;
 @Mapper
 public interface SysOrderDao {
 	/**
+	 * 修改订单信息
+	 * @param sysOrder
+	 * @return
+	 */
+	int updateSysOrder(SysOrder sysOrder);
+
+	/**
 	 * 根据订单id删除订单
 	 * @param orderIds
 	 * @return
