@@ -38,7 +38,7 @@ public class SysOrderTest {
     
     @Test
     public void deleteByIds() {
-    	int rows = sysosi.deleteSysOrder(1);
+    	int rows = sysosi.deleteSysOrder(2);
     	System.out.println(rows);
     }
     

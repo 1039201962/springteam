@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.st.springsys.sysuser.dao.SysUserDao">
+
+	<select id="findObjectById" resultMap="sysUserPojo">
+		select *
+		from user
+		where id=#{id}
+	</select>
+     
+     <delete id="deleteObject">
+     delete from user where id=#{id}
+     </delete>
+     
+	<update id="updateObject"
+		parameterType="com.st.springsys.sysuser.entity.SysUser">
+		update user
+		set username=#{username},
+		email=#{email},
+		sex=#{sex},
+		modifiedTime=now(),
+		where id=#{id}
+	</update>
+
+	<insert id="insertObject"
+		parameterType="com.st.springsys.sysuser.entity.SysUser"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into user
+		(id,username,password,email,mobile,sex,salt,
+		valid,createdTime,money,pay_password)
+		values
+		(null,#{username},#{password},#{email},#{mobile},
+		#{sex},#{salt},#{valid},now(),#{money},#{pay_password})
+	</insert>
+	<!-- 禁用或启用 -->
+	<update id="validById">
+		update user
+		set valid=#{valid},
+		modifieTime=now()
+		where id=#{id}
+	</update>
+
+	<sql id="queryWhereId">
+		from user
+		<where>
+			<if test="username!=null and username!=''">
+				username like concat("%",#{username},"%")
+			</if>
+		</where>
+	</sql>
+	<!-- 按条件查询记录总数 -->
+	<select id="getRowCount">
+		select count(*)
+		<include refid="queryWhereId" />
+	</select>
+
+	<resultMap type="com.st.springsys.sysuser.pojo.SysUserPojo"
+		id="sysUserPojo">
+	</resultMap>
+	<!-- 查询当前页记录 -->
+	<select id="findPageObjects" resultMap="sysUserPojo">
+		select *
+		<include refid="queryWhereId" />
+		order by createdTime desc
+		limit #{startIndex},#{pageSize}
+	</select>
+
+</mapper>
