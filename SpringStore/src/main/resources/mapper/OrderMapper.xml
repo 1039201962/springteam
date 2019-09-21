@@ -40,17 +40,14 @@
 	</update>
 	<!-- 模糊查询 -->
 	<select id="likeFindOrder"
-<<<<<<< HEAD
 		resultType="com.st.springstore.common.vo.OrderVo">
 		select order_num as orderNum,o.createdTime,o.name,o.valid,o.num,g.main_img as img,g.title,o.amount
 		from goods g,order_list o
 		where g.goodsId in 
-=======
 		resultType="com.st.springstore.order.pojo.Order">
 		select order_num,createdTime,name,valid,num,main_img,title,amount
 		from goods,order_list
 		where goodsId in
->>>>>>> branch 'project' of https://github.com/1039201962/springteam.git
 		(select  goodsId from goods where  goodsId in
 		(select goodsId from order_list where userId=#{userId}) 
 		and title like  CONCAT(CONCAT('%',#{goodsName}),'%')) and
