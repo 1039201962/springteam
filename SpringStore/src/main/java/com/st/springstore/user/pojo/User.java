@@ -7,6 +7,10 @@ import lombok.Data;
 
 @Data
 public class User implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6879043224222018064L;
 	private int id;
 	private String username;
 	/** 加密处理 */
@@ -22,9 +26,9 @@ public class User implements Serializable {
 	/** 注册时间  */
 	private Date createdTime;
 	/** 账户余额不允许被查询出来，带到网页对象 */
-	private Double money=0.0;
+	private Double money=0.00;
 	/** 支付密码，加密处理，不允许被查询出来显示*/
 	private String pay_password ;
-	
+	/**修改时间*/
 	private Date modifieTime;		
 }

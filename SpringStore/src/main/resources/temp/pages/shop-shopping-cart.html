@@ -1,3 +1,71 @@
+<!DOCTYPE html>
+
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+
+<!-- Head BEGIN -->
+<head>
+  <meta charset="utf-8">
+  <title>Shopping cart</title>
+
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <meta content=" description" name="description">
+  <meta content=" keywords" name="keywords">
+  <meta content="keenthemes" name="author">
+  <meta property="og:site_name" content="-CUSTOMER VALUE-">
+  <meta property="og:title" content="-CUSTOMER VALUE-">
+  <meta property="og:description" content="-CUSTOMER VALUE-">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="-CUSTOMER VALUE-"><!-- link to image for socio -->
+  <meta property="og:url" content="-CUSTOMER VALUE-">
+
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <!-- Fonts START -->
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css"> 
+  <!-- Fonts END -->
+
+  <!-- Global styles START -->          
+  <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Global styles END --> 
+   
+  <!-- Page level plugin styles START -->
+  <link href="plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
+  <link href="plugins/owl.carousel/owl.carousel.css" rel="stylesheet">
+  <link href="plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css">
+  <link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css"><!-- for slider-range -->
+  <link href="plugins/rateit/src/rateit.css" rel="stylesheet" type="text/css">
+  <!-- Page level plugin styles END -->
+
+  <!-- Theme styles START -->
+  <link href="pages/css/components.css" rel="stylesheet">
+  <link href="corporate/css/style.css" rel="stylesheet">
+  <link href="pages/css/style-shop.css" rel="stylesheet" type="text/css">
+  <link href="corporate/css/style-responsive.css" rel="stylesheet">
+  <link href="corporate/css/themes/red.css" rel="stylesheet" id="style-color">
+  <link href="corporate/css/custom.css" rel="stylesheet">
+  <style>
+  	#product-quantity{
+  	width:50px;
+  	}
+  </style>
+  <!-- Theme styles END -->
+</head>
+<!-- Head END -->
+
+<!-- Body BEGIN -->
+<body class="ecommerce">
+    <!-- BEGIN STYLE CUSTOMIZER -->
+    <!-- END BEGIN STYLE CUSTOMIZER --> 
+    <!-- BEGIN TOP BAR -->
+    <div id="header"></div>
+    <!-- Header END -->  
    <div class="main">
       <div class="container">
         <!-- BEGIN SIDEBAR & CONTENT -->
@@ -11,7 +79,7 @@
                 <table class="table table-hover">
 					<thead>
 						<tr>
-						    <th><input type="checkbox" id="checkAll">全选</th>
+						    <th><input type="checkbox" id="checkAll" name="cItem">全选</th>
 							<th class="goods-page-image">商品图片</th>
                             <th class="goods-page-description">商品描述</th>
                             <th class="goods-page-quantity">数量</th>
@@ -27,34 +95,227 @@
 				</table>
                 </div>
                 <div id="pageId" class="box-footer clearfix">
-			      
+			      <ul class="pagination pagination-sm no-margin pull-right">
+                    <li><a class="first">首页</a></li>
+	                <li><a class="pre">上一页</a></li>
+	                <li><a class="next">下一页</a></li>
+	                <li><a class="last">尾页</a></li>
+	                <li><a class="rowCount">总记录数(0)</a></li>
+	                <li><a class="pageCount">总页数(0)</a></li>
+	                <li><a class="pageCurrent">当前页(1)</a></li>
+                  </ul>
 			    </div>
 			
                 <div class="shopping-total">
                   <ul>
                     <li>
                       <em>商品总额</em>
-                      <strong class="price"><span>$</span>47.00</strong>
-                    </li>
-                    <li>
-                      <em>运费</em>
-                      <strong class="price"><span>$</span>3.00</strong>
-                    </li>
-                    <li class="shopping-total-price">
-                      <em>总支付</em>
-                      <strong class="price"><span>$</span>50.00</strong>
+                      <strong id="strongId" class="price">0.00</strong>
                     </li>
                   </ul>
                 </div>
               </div>
+              <a href="index">
               <button id="butshop" class="btn btn-default" type="submit">继续购物<i class="fa fa-shopping-cart"></i></button>
+              </a>
               <button id="butout" class="btn btn-primary" type="submit">结算<i class="fa fa-check"></i></button>
             </div>
           </div>
           <!-- END CONTENT -->
         </div>
+        <!-- END SIDEBAR & CONTENT -->
+
+        <!-- BEGIN SIMILAR PRODUCTS -->
+        <div class="row margin-bottom-40">
+          <div class="col-md-12 col-sm-12">
+            <h2>Most popular products</h2>
+            <div class="owl-carousel owl-carousel4">
+              <div>
+                <div class="product-item">
+                  <div class="pi-img-wrapper">
+                    <img src="pages/img/products/k1.jpg" class="img-responsive" alt="Berry Lace Dress">
+                    <div>
+                      <a href="pages/img/products/k1.jpg" class="btn btn-default fancybox-button">Zoom</a>
+                      <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
+                    </div>
+                  </div>
+                  <h3><a href="shop-item.html">Berry Lace Dress</a></h3>
+                  <div class="pi-price">$29.00</div>
+                  <a href="javascript:;" class="btn btn-default add2cart">Add to cart</a>
+                  <div class="sticker sticker-new"></div>
+                </div>
+              </div>
+              <div>
+                <div class="product-item">
+                  <div class="pi-img-wrapper">
+                    <img src="pages/img/products/k2.jpg" class="img-responsive" alt="Berry Lace Dress">
+                    <div>
+                      <a href="pages/img/products/k2.jpg" class="btn btn-default fancybox-button">Zoom</a>
+                      <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
+                    </div>
+                  </div>
+                  <h3><a href="shop-item.html">Berry Lace Dress2</a></h3>
+                  <div class="pi-price">$29.00</div>
+                  <a href="javascript:;" class="btn btn-default add2cart">Add to cart</a>
+                </div>
+              </div>
+              <div>
+                <div class="product-item">
+                  <div class="pi-img-wrapper">
+                    <img src="pages/img/products/k3.jpg" class="img-responsive" alt="Berry Lace Dress">
+                    <div>
+                      <a href="pages/img/products/k3.jpg" class="btn btn-default fancybox-button">Zoom</a>
+                      <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
+                    </div>
+                  </div>
+                  <h3><a href="shop-item.html">Berry Lace Dress3</a></h3>
+                  <div class="pi-price">$29.00</div>
+                  <a href="javascript:;" class="btn btn-default add2cart">Add to cart</a>
+                </div>
+              </div>
+              <div>
+                <div class="product-item">
+                  <div class="pi-img-wrapper">
+                    <img src="pages/img/products/k4.jpg" class="img-responsive" alt="Berry Lace Dress">
+                    <div>
+                      <a href="pages/img/products/k4.jpg" class="btn btn-default fancybox-button">Zoom</a>
+                      <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
+                    </div>
+                  </div>
+                  <h3><a href="shop-item.html">Berry Lace Dress4</a></h3>
+                  <div class="pi-price">$29.00</div>
+                  <a href="javascript:;" class="btn btn-default add2cart">Add to cart</a>
+                  <div class="sticker sticker-sale"></div>
+                </div>
+              </div>
+              <div>
+                <div class="product-item">
+                  <div class="pi-img-wrapper">
+                    <img src="pages/img/products/k1.jpg" class="img-responsive" alt="Berry Lace Dress">
+                    <div>
+                      <a href="pages/img/products/k1.jpg" class="btn btn-default fancybox-button">Zoom</a>
+                      <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
+                    </div>
+                  </div>
+                  <h3><a href="shop-item.html">Berry Lace Dress5</a></h3>
+                  <div class="pi-price">$29.00</div>
+                  <a href="javascript:;" class="btn btn-default add2cart">Add to cart</a>
+                </div>
+              </div>
+              <div>
+                <div class="product-item">
+                  <div class="pi-img-wrapper">
+                    <img src="pages/img/products/k2.jpg" class="img-responsive" alt="Berry Lace Dress">
+                    <div>
+                      <a href="pages/img/products/k2.jpg" class="btn btn-default fancybox-button">Zoom</a>
+                      <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
+                    </div>
+                  </div>
+                  <h3><a href="shop-item.html">Berry Lace Dress6</a></h3>
+                  <div class="pi-price">$29.00</div>
+                  <a href="javascript:;" class="btn btn-default add2cart">Add to cart</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- END SIMILAR PRODUCTS -->
       </div>
-    </div>   
+    </div>
+
+    <!-- BEGIN STEPS -->
+   
+    <!-- END STEPS -->
+
+    <!-- BEGIN PRE-FOOTER -->
+    <div id="footer"></div>
+    <!-- END FOOTER -->
+
+    <!-- BEGIN fast view of a product -->
+    <div id="product-pop-up" style="display: none; width: 700px;">
+            <div class="product-page product-pop-up">
+              <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-3">
+                  <div class="product-main-image">
+                    <img src="pages/img/products/model7.jpg" alt="Cool green dress with red bell" class="img-responsive">
+                  </div>
+                  <div class="product-other-images">
+                    <a href="javascript:;" class="active"><img alt="Berry Lace Dress" src="pages/img/products/model3.jpg"></a>
+                    <a href="javascript:;"><img alt="Berry Lace Dress" src="pages/img/products/model4.jpg"></a>
+                    <a href="javascript:;"><img alt="Berry Lace Dress" src="pages/img/products/model5.jpg"></a>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-9">
+                  <h1>Cool green dress with red bell</h1>
+                  <div class="price-availability-block clearfix">
+                    <div class="price">
+                      <strong><span>$</span>47.00</strong>
+                      <em>$<span>62.00</span></em>
+                    </div>
+                    <div class="availability">
+                      Availability: <strong>In Stock</strong>
+                    </div>
+                  </div>
+                  <div class="description">
+                    <p>Lorem ipsum dolor ut sit ame dolore  adipiscing elit, sed nonumy nibh sed euismod laoreet dolore magna aliquarm erat volutpat 
+Nostrud duis molestie at dolore.</p>
+                  </div>
+                  <div class="product-page-options">
+                    <div class="pull-left">
+                      <label class="control-label">Size:</label>
+                      <select class="form-control input-sm">
+                        <option>L</option>
+                        <option>M</option>
+                        <option>XL</option>
+                      </select>
+                    </div>
+                    <div class="pull-left">
+                      <label class="control-label">Color:</label>
+                      <select class="form-control input-sm">
+                        <option>Red</option>
+                        <option>Blue</option>
+                        <option>Black</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="product-page-cart">
+                    <div class="product-quantity">
+                        <input id="product-quantity3" type="text" value="1" readonly class="form-control input-sm">
+                    </div>
+                    <button class="btn btn-primary" type="submit">Add to cart</button>
+                    <a href="shop-item.html" class="btn btn-default">More details</a>
+                  </div>
+                </div>
+
+                <div class="sticker sticker-sale"></div>
+              </div>
+            </div>
+    </div>
+    <!-- END fast view of a product -->
+
+    <!-- Load javascripts at bottom, this will reduce page load time -->
+    <!-- BEGIN CORE PLUGINS (REQUIRED FOR ALL PAGES) -->
+    <!--[if lt IE 9]>
+    <script src="plugins/respond.min.js"></script>  
+    <![endif]-->  
+    <script src="plugins/jquery.min.js" type="text/javascript"></script>
+    <script src="plugins/jquery-migrate.min.js" type="text/javascript"></script>
+    <script src="plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>      
+    <!-- <script src="corporate/scripts/back-to-top.js" type="text/javascript"></script> -->
+    <script src="plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <!-- END CORE PLUGINS -->
+
+    <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
+    <script src="plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script><!-- pop up -->
+    <script src="plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script><!-- slider for products -->
+    <script src='plugins/zoom/jquery.zoom.min.js' type="text/javascript"></script><!-- product zoom -->
+    <script src="plugins/bootstrap-touchspin/bootstrap.touchspin.js" type="text/javascript"></script><!-- Quantity -->
+    <script src="plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+    <script src="plugins/rateit/src/jquery.rateit.js" type="text/javascript"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script><!-- for slider-range -->
+
+    <script src="corporate/scripts/layout.js" type="text/javascript"></script>
+	<script src="corporate/scripts/base.js" type="text/javascript"></script>   
  <script type="text/javascript">
     jQuery(document).ready(function() {
         Layout.init();    
@@ -62,13 +323,10 @@
         //Layout.initTwitter();
         Layout.initImageZoom();
         Layout.initTouchspin();
+        
     });
     
     $(function(){ 	  
-  	  //跳转到首页
-  	  $("#butshop").click(function(){
-  		  $("#content").load("/index");
-  	  })
   	  //结算点击事件
   	  $("#butout").click(function(){
   		  //取数据
@@ -76,32 +334,93 @@
   			$.ajax({
   				url:"/orders/doAddOrder",
   				method:"get",
+  				traditional: true,  
   				//anysc:false,
   				data:{
-  					"goodsIds":goodsIds
-  				}
+  					"goodsIds":goodsIds,"userId":1
+  				},
   				success:function(result){
-  					if(result == 1)
+  					if(result == 1){
   						console.log("提交成功");
   					$("#content").load("/shop-wishlist");
-  				}else{
-  					console.log("提交异常")；
+  					}
+  				else
+  					console.log("提交异常");
   				}
   				
   			})
+  		
   	  });
-  	 
-  	  //页面加载完成异步加载doFindPageObjects对应的资源
-      $("#pageId").load("doFindPageObjects",doGetObjects);
-      
-     //全选按钮事件注册
+  	  doGetObjects();      
+      //全选按钮事件注册
 	  $("#checkAll").change(doChangeTBodyCheckBoxState);
+	  $("#checkAll").change(doGetGoodsMoney);
 	  //基于tbody中checkbox状态,修改thead中checkbox状态
 	  $("#tbodyId").on("change",".cBox",doChangeTHeadCheckBoxState)
+	  $("#tbodyId").on("change",".cBox",doGetGoodsMoney)
+    });
 	  //删除按钮事件注册
-	  $("#tbodyId").on("click",".btn-delete",doDeleteObjects)
+	  $("#tbodyId").on("click",".btn-delete",doDeleteObjects);
+	  //分页
+	  $("#pageId").on("click",".first,.pre,.next,.last",doJumpToPage);
     });  
-  	  
+  	
+    function doSetPagination(page){
+    	//1.初始化数据
+    	$(".rowCount").html("总记录数("+page.rowCount+")");
+    	$(".pageCount").html("总页数("+page.pageCount+")");
+    	$(".pageCurrent").html("当前页("+page.pageCurrent+")");
+    	//2.绑定数据(为后续对此数据的使用提供服务)
+    	$("#pageId").data("pageCurrent",page.pageCurrent);
+    	$("#pageId").data("pageCount",page.pageCount);
+    }
+    function doJumpToPage(){
+        //1.获取点击对象的class值
+        var cls=$(this).prop("class");//Property
+        //2.基于点击的对象执行pageCurrent值的修改
+        //2.1获取pageCurrent,pageCount的当前值
+        var pageCurrent=$("#pageId").data("pageCurrent");
+        var pageCount=$("#pageId").data("pageCount");
+        //2.2修改pageCurrent的值
+        if(cls=="first"){//首页
+        	pageCurrent=1;
+        }else if(cls=="pre"&&pageCurrent>1){//上一页
+        	pageCurrent--;
+        }else if(cls=="next"&&pageCurrent<pageCount){//下一页
+        	pageCurrent++;
+        }else if(cls=="last"){//最后一页
+        	pageCurrent=pageCount;
+        }else{
+         return;
+}
+        //3.对pageCurrent值进行重新绑定
+        $("#pageId").data("pageCurrent",pageCurrent);
+        //4.基于新的pageCurrent的值进行当前页数据查询
+        doGetObjects();
+    }
+  //获取商品总金额  
+      function doGetGoodsMoney(){
+	    debugger
+    	//1.获取选中记录对象的checkbox的值并进行判定
+  	    var idArray=doGetCheckedIds();
+    	//2.构建请求参数
+    	var params={"goodsIds":idArray.toString()}
+    	//3.构建请求url
+    	var url="car/doSelectCarMoney"
+    	//4.发送异步请求操作
+    	$.post(url,params,function(result){ 	
+    		debugger;
+    		console.log(result);
+    		if(result.state==1){
+    			doCreateGoodsMoney(result.data);
+    		}else{
+    			console.log("----------");
+    			console.log(result.state);
+    		}
+    				
+    		
+    	})
+  }
   //点击删除按钮时执行删除操作
       function doDeleteObjects(){
  	   //1.获取选中记录对象的checkbox的值并进行判定
@@ -113,9 +432,9 @@
  	   }
  	   if(!confirm("确认删除吗?"))return;
  	   //2.构建请求参数
- 	   var params={"ids":idArray.toString()}
+ 	   var params={"goodsIds":idArray.toString()}
  	   //3.构建请求url
- 	   var url="/doDeleteCar"
+ 	   var url="/car/doDeleteCar"
  	   //4.发送异步请求执行删除操作.
  	   $.post(url,params,function(result){
  		   if(result.state==1){
@@ -128,7 +447,8 @@
  		   }
  	   })
     }
-  
+    
+      //遍历获取选中的goodsId
       function doGetCheckedIds(){
     		 //1.定义数组
     		 var idArray=[];
@@ -188,11 +508,11 @@
    	  //1.定义请求参数
    	  var pageCurrent=$("#pageId").data("pageCurrent");
    	  if(!pageCurrent)pageCurrent=1;
-   	  var params={"pageCurrent":pageCurrent};
+   	  var params={"pageCurrent":pageCurrent,"userId":1};
    	  var uname=$("#searchNameId").val();
    	  if(uname)params.username=uname;
    	  //2.定义请求的url
-   	  var url="log/doFindPageObjects";
+   	  var url="/car/doFindPageObjects";
    	  //3.发送异步请求加载日志数据
    	  //1)getJSON为Jquery框架中的函数
    	  //2)getJson用于向服务端发起Get请求
@@ -210,7 +530,7 @@
    	      if(result.state==1){
    	    	  //1.呈现查询的购物车记录
    	    	  //console.log(result.data.records)
-   	    	  doSetTableBodyRows(result.data.records.carGoods);
+   	    	  doSetTableBodyRows(result.data.records);
    	    	  //2.呈现分页信息
    	    	  doSetPagination(result.data);//pageObject
    	      }else{
@@ -219,37 +539,45 @@
       }
      
   	  //追加购物车记录到tbody中
-      function doSetTableBodyRows(carGoods){
+      function doSetTableBodyRows(records){
    	   //1.获取tbody对象,并清空内容
    	   var tBody=$("#tbodyId");
    	   tBody.empty();
    	   //声明数组
    	   var goodsIds = [];
    	   //2.将记录添加到tbody中
-   	   for(var i=0;i<carGoods.length;i++){
+   	   if(records!=null)
+   	   for(var i=0;i<records.length;i++){
    		   //储存id到数组
-   		   goodsIds[i] = carGoods.goodsId;
+   		   goodsIds[i] =records[i].goodsId;
    		  //2.1创建tr对象
    		  var tr=$("<tr></tr>");
    		  //2.2创建多个td对象
-   		  var tds=doCreateTds(carGoods[i]);
+   		  var tds=doCreateTds(records[i]);
    		  //2.3将td追加到tr中
    		  tr.append(tds);
    		  //2.4将tr追加到tbody中
    		  tBody.append(tr);
-   	   }
+   	   };
    	   //储存到dom上
    		$("#butout").data("goodsIds",goodsIds);
       }
-      
+  	  //追加商品总金额到页面中
+      function doCreateGoodsMoney(data){
+    	//获取设置总金额的位置
+  		  var strong = $("#strongId");
+  		  strong.empty();
+    	  var span="<span>￥<span>"+data+""
+    	  strong.append(span);
+    	};
   	  function doCreateTds(data){
-  	    var tds="<td><input type='checkbox' class='cBox' name='cItem' value='"+data.userId+"'></td>"+
+  	    var tds="<td><input type='checkbox' class='cBox' name='cItem' value='"+data.goodsId+"'></td>"+
   		   	 "<td>"+data.main_img+"</td>"+
   		     "<td>"+data.descript+"</td>"+
   		     "<td><input id='product-quantity' type='text' value='"+data.num+"' class='form-control input-sm'></td>"+
   		     "<td>"+data.price+"</td>"+
   		     "<td>"+data.total+"</td>"+
-  		     "<td><button type='button' class='btn btn-default btn-delete' value='"+data.userId+"'>删除</button></td>";	     
+  		     "<td><button type='button' class='btn btn-default btn-delete' value='"+data.goodsId+"'>删除</button></td>";	     
            return tds;
      }
     </script>

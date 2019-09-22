@@ -88,11 +88,14 @@ public class CarServiceImpl implements CarService{
 				List<Car> list=
 						carDao.findPageObjects(userId,
 						startIndex, pageSize);
-				CarGoodsVo carGoods = new CarGoodsVo();
-				for (Car car : list) {			
+				
+				for (Car car : list) {	
+					CarGoodsVo carGoods = new CarGoodsVo();
 					Goods goods = goodsDao.findGoodsById(car.getGoodsId());
+					System.out.println(car.getGoodsId());
 					if(goods==null)
 						throw new ServiceException("商品不存在");
+					System.out.println(car.getGoodsId());
 					carGoods.setGoodsId(car.getGoodsId());
 					int num = car.getNum();
 					carGoods.setNum(num);
@@ -109,10 +112,8 @@ public class CarServiceImpl implements CarService{
 	}
 	/**查询用户选中的商品总金额*/
 	@Override
-	public double SelectCarMoney(Integer userId, Integer...goodsIds) {
-		if(userId==null)
-			throw new ServiceException("请先登录");
-		if(goodsIds==null)
+	public double SelectCarMoney(Integer userId, Integer...goodsIds) {		
+		if(goodsIds==null||goodsIds.length==0)
 			throw new ServiceException("请选择商品");
 		double totalMoney=0;
 		List<Car> list = carDao.findByGoodsId(userId,goodsIds);

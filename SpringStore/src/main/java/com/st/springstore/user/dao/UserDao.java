@@ -5,7 +5,6 @@ import org.apache.ibatis.annotations.Mapper;
 import com.st.springstore.user.pojo.User;
 
 @Mapper
-
 public interface UserDao {
 	/**
 	 *  注册新用户
@@ -30,4 +29,11 @@ public interface UserDao {
 	 * @return
 	 */
 	String findPayPasswordByUserId(int id);
+	/**
+	 * 根据用户名查询用户
+	 * @param userName
+	 * @return
+	 */
+	User findUserByUserName(String username);
+	
 }

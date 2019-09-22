@@ -10,7 +10,7 @@ public class DiliveryInfo {
 	private Integer mobile;
 	private String addr;
 	private String name;
-	private int status;
+	private int status=1 ;//Default=1
 	public DiliveryInfo() {
 		super();
 	}

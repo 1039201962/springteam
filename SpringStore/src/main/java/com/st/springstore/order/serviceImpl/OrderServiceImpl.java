@@ -21,7 +21,7 @@ import com.st.springstore.order.pojo.Order;
 import com.st.springstore.order.service.OrderService;
 
 @Service
-public class OrderServiceImpl implements OrderService {
+public class OrderServiceImpl implements OrderService{
 	@Autowired
 	private OrderDao orderDao;
 	@Autowired
@@ -34,8 +34,8 @@ public class OrderServiceImpl implements OrderService {
 	 * 
 	 * @return
 	 */
-	public static Long orderId() {
-		int r1 = (int) (Math.random() * (9) + 1);// 产生2个0-9的随机数
+	public static Long  orderId() {
+		int r1 = (int) (Math.random() * (9) + 1);//产生2个0-9的随机数
 		SimpleDateFormat MMddHHmmss = new SimpleDateFormat("MMddHHmmss");
 		String format = MMddHHmmss.format(new Date());
 		return Long.parseLong(format + r1);
@@ -43,14 +43,14 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	/**
-	 * 查询用户的所有收货地址
+	 *查询用户的所有收货地址
 	 */
 
 	public List<ReceivingVo> findreceivingInfos(Integer userId) {
 		List<ReceivingVo> list = orderDao.selectInfo(userId);
 		return list;
 	}
-
+	
 	/**
 	 * 生成新订单,返回一个订单的id
 	 */
@@ -89,9 +89,9 @@ public class OrderServiceImpl implements OrderService {
 			// 查找商品
 			Goods goods = goodsDao.findGoodsById(goodsId);
 			Car car = carDao.findById(userId, goodsId);
-			// 单个商品的数量
+			//单个商品的数量
 			int num = car.getNum();
-			// 单个商品的价格
+			//单个商品的价格
 			Double prize = goods.getPrice();
 			// 累计金额
 			amount += num * prize;
