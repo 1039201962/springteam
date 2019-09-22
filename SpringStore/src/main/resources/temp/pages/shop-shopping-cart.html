@@ -50,6 +50,11 @@
   <link href="corporate/css/style-responsive.css" rel="stylesheet">
   <link href="corporate/css/themes/red.css" rel="stylesheet" id="style-color">
   <link href="corporate/css/custom.css" rel="stylesheet">
+  <style>
+  	#product-quantity{
+  	width:50px;
+  	}
+  </style>
   <!-- Theme styles END -->
 </head>
 <!-- Head END -->
@@ -60,106 +65,60 @@
     <!-- END BEGIN STYLE CUSTOMIZER --> 
     <!-- BEGIN TOP BAR -->
     <div id="header"></div>
-    <!-- Header END -->
-
-    <div class="main">
+    <!-- Header END -->  
+   <div class="main">
       <div class="container">
         <!-- BEGIN SIDEBAR & CONTENT -->
         <div class="row margin-bottom-40">
           <!-- BEGIN CONTENT -->
           <div class="col-md-12 col-sm-12">
-            <h1>Shopping cart</h1>
+            <h1>购物车</h1>
             <div class="goods-page">
               <div class="goods-data clearfix">
                 <div class="table-wrapper-responsive">
-                <table summary="Shopping cart">
-                  <tr>
-                    
-                    <th class="goods-page-image">Image</th>
-                    <th class="goods-page-description">Description</th>
-                    <th class="goods-page-ref-no">Ref No</th>
-                    <th class="goods-page-quantity">Quantity</th>
-                    <th class="goods-page-price">Unit price</th>
-                    <th class="goods-page-total" colspan="2">Total</th>
-                  </tr>
-                  <tr>
-             
-                    <td class="goods-page-image">
-                      <a href="javascript:;"><img src="pages/img/products/model3.jpg" alt="Berry Lace Dress"></a>
-                    </td>
-                    <td class="goods-page-description">
-                      <h3><a href="javascript:;">Cool green dress with red bell</a></h3>
-                      <p><strong>Item 1</strong> - Color: Green; Size: S</p>
-                      <em>More info is here</em>
-                    </td>
-                    <td class="goods-page-ref-no">
-                      javc2133
-                    </td>
-                    <td class="goods-page-quantity">
-                      <div class="product-quantity">
-                          <input id="product-quantity" type="text" value="1" readonly class="form-control input-sm">
-                      </div>
-                    </td>
-                    <td class="goods-page-price">
-                      <strong><span>$</span>47.00</strong>
-                    </td>
-                    <td class="goods-page-total">
-                      <strong><span>$</span>47.00</strong>
-                    </td>
-                    <td class="del-goods-col">
-                      <a class="del-goods" href="javascript:;">&nbsp;</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    
-                    <td class="goods-page-image">
-                      <a href="javascript:;"><img src="pages/img/products/model4.jpg" alt="Berry Lace Dress"></a>
-                    </td>
-                    <td class="goods-page-description">
-                      <h3><a href="javascript:;">Cool green dress with red bell</a></h3>
-                      <p><strong>Item 1</strong> - Color: Green; Size: S</p>
-                      <em>More info is here</em>
-                    </td>
-                    <td class="goods-page-ref-no">
-                      javc2133
-                    </td>
-                    <td class="goods-page-quantity">
-                      <div class="product-quantity">
-                          <input id="product-quantity2" type="text" value="1" readonly class="form-control input-sm">
-                      </div>
-                    </td>
-                    <td class="goods-page-price">
-                      <strong><span>$</span>47.00</strong>
-                    </td>
-                    <td class="goods-page-total">
-                      <strong><span>$</span>47.00</strong>
-                    </td>
-                    <td class="del-goods-col">
-                      <a class="del-goods" href="javascript:;">&nbsp;</a>
-                    </td>
-                  </tr>
-                </table>
+                <table class="table table-hover">
+					<thead>
+						<tr>
+						    <th><input type="checkbox" id="checkAll" name="cItem">全选</th>
+							<th class="goods-page-image">商品图片</th>
+                            <th class="goods-page-description">商品描述</th>
+                            <th class="goods-page-quantity">数量</th>
+                            <th class="goods-page-price">单价</th>
+                            <th class="goods-page-total" colspan="2">总价</th>
+						</tr>
+					</thead>
+					<tbody id="tbodyId">
+					    <tr>
+					       <td colspan="7">数据正在加载中...</td>
+					    </tr>
+					</tbody>
+				</table>
                 </div>
-
+                <div id="pageId" class="box-footer clearfix">
+			      <ul class="pagination pagination-sm no-margin pull-right">
+                    <li><a class="first">首页</a></li>
+	                <li><a class="pre">上一页</a></li>
+	                <li><a class="next">下一页</a></li>
+	                <li><a class="last">尾页</a></li>
+	                <li><a class="rowCount">总记录数(0)</a></li>
+	                <li><a class="pageCount">总页数(0)</a></li>
+	                <li><a class="pageCurrent">当前页(1)</a></li>
+                  </ul>
+			    </div>
+			
                 <div class="shopping-total">
                   <ul>
                     <li>
-                      <em>Sub total</em>
-                      <strong class="price"><span>$</span>47.00</strong>
-                    </li>
-                    <li>
-                      <em>Shipping cost</em>
-                      <strong class="price"><span>$</span>3.00</strong>
-                    </li>
-                    <li class="shopping-total-price">
-                      <em>Total</em>
-                      <strong class="price"><span>$</span>50.00</strong>
+                      <em>商品总额</em>
+                      <strong id="strongId" class="price">0.00</strong>
                     </li>
                   </ul>
                 </div>
               </div>
-              <button id="butshop" class="btn btn-default" type="submit">Continue shopping <i class="fa fa-shopping-cart"></i></button>
-              <button id="butout" class="btn btn-primary" type="submit">Checkout <i class="fa fa-check"></i></button>
+              <a href="index">
+              <button id="butshop" class="btn btn-default" type="submit">继续购物<i class="fa fa-shopping-cart"></i></button>
+              </a>
+              <button id="butout" class="btn btn-primary" type="submit">结算<i class="fa fa-check"></i></button>
             </div>
           </div>
           <!-- END CONTENT -->
@@ -356,34 +315,270 @@ Nostrud duis molestie at dolore.</p>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script><!-- for slider-range -->
 
     <script src="corporate/scripts/layout.js" type="text/javascript"></script>
-	<script src="corporate/scripts/base.js" type="text/javascript"></script>
-    <script type="text/javascript">
+	<script src="corporate/scripts/base.js" type="text/javascript"></script>   
+ <script type="text/javascript">
     jQuery(document).ready(function() {
         Layout.init();    
         Layout.initOWL();
         //Layout.initTwitter();
         Layout.initImageZoom();
         Layout.initTouchspin();
+        
     });
+    
     $(function(){ 	  
-  	  //查询按钮事件注册
-  	  $("#butshop").change(doUrlGoods);
-  	  $("#butout").change(doUrlGoods);
-
-  //跳转首页
-    function doUrlGoods(){
-    	//1.定义请求的url
-  	  var url="index";
-  	  //2.
-  	  //1)getJSON为Jquery框架中的函数
-  	  //2)getJson用于向服务端发起Get请求
-  	  //3)getJSON会将服务端返回的JSON串直接转换为JSON格式的JS对象
-  	  //4)function(result){}会在服务端数据响应到客户端以后执行
-  	  $("#butshop").getJSON(url);
+  	  //结算点击事件
+  	  $("#butout").click(function(){
+  		  //取数据
+  		  var goodsIds = $("#butout").data("goodsIds");
+  			$.ajax({
+  				url:"/orders/doAddOrder",
+  				method:"get",
+  				traditional: true,  
+  				//anysc:false,
+  				data:{
+  					"goodsIds":goodsIds,"userId":1
+  				},
+  				success:function(result){
+  					if(result == 1){
+  						console.log("提交成功");
+  					$("#content").load("/shop-wishlist");
+  					}
+  				else
+  					console.log("提交异常");
+  				}
+  				
+  			})
+  		
+  	  });
+  	  doGetObjects();      
+      //全选按钮事件注册
+	  $("#checkAll").change(doChangeTBodyCheckBoxState);
+	  $("#checkAll").change(doGetGoodsMoney);
+	  //基于tbody中checkbox状态,修改thead中checkbox状态
+	  $("#tbodyId").on("change",".cBox",doChangeTHeadCheckBoxState)
+	  $("#tbodyId").on("change",".cBox",doGetGoodsMoney)
+    });
+	  //删除按钮事件注册
+	  $("#tbodyId").on("click",".btn-delete",doDeleteObjects);
+	  //分页
+	  $("#pageId").on("click",".first,.pre,.next,.last",doJumpToPage);
+    });  
+  	
+    function doSetPagination(page){
+    	//1.初始化数据
+    	$(".rowCount").html("总记录数("+page.rowCount+")");
+    	$(".pageCount").html("总页数("+page.pageCount+")");
+    	$(".pageCurrent").html("当前页("+page.pageCurrent+")");
+    	//2.绑定数据(为后续对此数据的使用提供服务)
+    	$("#pageId").data("pageCurrent",page.pageCurrent);
+    	$("#pageId").data("pageCount",page.pageCount);
+    }
+    function doJumpToPage(){
+        //1.获取点击对象的class值
+        var cls=$(this).prop("class");//Property
+        //2.基于点击的对象执行pageCurrent值的修改
+        //2.1获取pageCurrent,pageCount的当前值
+        var pageCurrent=$("#pageId").data("pageCurrent");
+        var pageCount=$("#pageId").data("pageCount");
+        //2.2修改pageCurrent的值
+        if(cls=="first"){//首页
+        	pageCurrent=1;
+        }else if(cls=="pre"&&pageCurrent>1){//上一页
+        	pageCurrent--;
+        }else if(cls=="next"&&pageCurrent<pageCount){//下一页
+        	pageCurrent++;
+        }else if(cls=="last"){//最后一页
+        	pageCurrent=pageCount;
+        }else{
+         return;
+}
+        //3.对pageCurrent值进行重新绑定
+        $("#pageId").data("pageCurrent",pageCurrent);
+        //4.基于新的pageCurrent的值进行当前页数据查询
+        doGetObjects();
+    }
+  //获取商品总金额  
+      function doGetGoodsMoney(){
+	    debugger
+    	//1.获取选中记录对象的checkbox的值并进行判定
+  	    var idArray=doGetCheckedIds();
+    	//2.构建请求参数
+    	var params={"goodsIds":idArray.toString()}
+    	//3.构建请求url
+    	var url="car/doSelectCarMoney"
+    	//4.发送异步请求操作
+    	$.post(url,params,function(result){ 	
+    		debugger;
+    		console.log(result);
+    		if(result.state==1){
+    			doCreateGoodsMoney(result.data);
+    		}else{
+    			console.log("----------");
+    			console.log(result.state);
+    		}
+    				
+    		
+    	})
+  }
+  //点击删除按钮时执行删除操作
+      function doDeleteObjects(){
+ 	   //1.获取选中记录对象的checkbox的值并进行判定
+ 	   var idArray=doGetCheckedIds();
+ 	   //console.log(idArray.toString());//123456
+ 	   if(idArray.length==0){
+ 		   alert("请先选中");
+ 		   return;
+ 	   }
+ 	   if(!confirm("确认删除吗?"))return;
+ 	   //2.构建请求参数
+ 	   var params={"goodsIds":idArray.toString()}
+ 	   //3.构建请求url
+ 	   var url="/car/doDeleteCar"
+ 	   //4.发送异步请求执行删除操作.
+ 	   $.post(url,params,function(result){
+ 		   if(result.state==1){
+ 			   alert(result.message);
+ 			   //查询刷新
+ 			   doSetPageCurrent();
+ 			   doGetObjects();
+ 		   }else{
+ 			   alert(result.message);
+ 		   }
+ 	   })
     }
     
+      //遍历获取选中的goodsId
+      function doGetCheckedIds(){
+    		 //1.定义数组
+    		 var idArray=[];
+    		 //2.迭代所有tbody中的checkbox,将选中的值存储到数组
+    		 $("#tbodyId input[type='checkbox']")
+    		 //each函数用于迭代元素,每发现一个就会执行function(){}
+    		 .each(function(){
+    			 //$(this)代表发现的checkbox对象
+    			 //记住所有checkbox默认都有一个checked属性
+    			 if($(this).prop("checked")){//选中状态
+    				 idArray.push($(this).val());
+    			 }
+    		 })
+    		 //3.返回存储了id的数组
+    		 return idArray;
+    	   }
+    
+  //删除以后刷新
+    function doSetPageCurrent(){
+   	 var pageCount=$("#pageId").data("pageCount");
+   	 var pageCurrent=$("#pageId").data("pageCurrent");
+   	 var checked=$("#checkAll").prop("checked");
+   	 if(pageCurrent==pageCount&&checked&&pageCurrent>1){
+   		 pageCurrent--;
+   		 $("#pageId").data("pageCurrent",pageCurrent);
+   	 }
+   }
+    
+     //基于tbody中checkbox状态,修改thead中checkbox状态
+     function doChangeTHeadCheckBoxState(){
+ 	  //1.获取tbody中checbox对象状态相与的结果
+ 	  var flag=true;
+ 	  $("#tbodyId input[type='checkbox']")
+ 	  .each(function(){
+ 		  flag=flag&&$(this).prop("checked");
+ 	  });
+ 	  //2.修改thead中checkbox的值
+ 	  $("#checkAll").prop("checked",flag);
+    }
+   
+     //点击thead中checkbox时,修改tbody中checkbox的状态
+     function doChangeTBodyCheckBoxState(){
+  	   //1.获取点击对象的状态
+  	   var flag=$(this).prop("checked");
+  	   //2.修改tbody中checkbox的状态
+  	   $("#tbodyId input[type='checkbox']")
+  	   .each(function(){
+  		   //prop方法中两个参数时表示为属性赋值
+  		   $(this).prop("checked",flag);
+  	   });
+     }
+     
+  	  //异步(底层启动工作线程)加载服务端数据
+      function doGetObjects(){
+   	  $("#checkAll").prop("checked",false);
+   	  //debugger
+   	  //1.定义请求参数
+   	  var pageCurrent=$("#pageId").data("pageCurrent");
+   	  if(!pageCurrent)pageCurrent=1;
+   	  var params={"pageCurrent":pageCurrent,"userId":1};
+   	  var uname=$("#searchNameId").val();
+   	  if(uname)params.username=uname;
+   	  //2.定义请求的url
+   	  var url="/car/doFindPageObjects";
+   	  //3.发送异步请求加载日志数据
+   	  //1)getJSON为Jquery框架中的函数
+   	  //2)getJson用于向服务端发起Get请求
+   	  //3)getJSON会将服务端返回的JSON串直接转换为JSON格式的JS对象
+   	  //4)function(result){}会在服务端数据响应到客户端以后执行
+   	  $.getJSON(url,params,function(result){//jsonResult
+   		  console.log("result",result)
+   		  //处理查询结果
+   		  doHandleResponseResult(result);
+   	  });
+      }
+    
+  	  //处理购物车查询结果
+      function doHandleResponseResult(result){
+   	      if(result.state==1){
+   	    	  //1.呈现查询的购物车记录
+   	    	  //console.log(result.data.records)
+   	    	  doSetTableBodyRows(result.data.records);
+   	    	  //2.呈现分页信息
+   	    	  doSetPagination(result.data);//pageObject
+   	      }else{
+   	    	  alert(result.message);
+   	      }
+      }
+     
+  	  //追加购物车记录到tbody中
+      function doSetTableBodyRows(records){
+   	   //1.获取tbody对象,并清空内容
+   	   var tBody=$("#tbodyId");
+   	   tBody.empty();
+   	   //声明数组
+   	   var goodsIds = [];
+   	   //2.将记录添加到tbody中
+   	   if(records!=null)
+   	   for(var i=0;i<records.length;i++){
+   		   //储存id到数组
+   		   goodsIds[i] =records[i].goodsId;
+   		  //2.1创建tr对象
+   		  var tr=$("<tr></tr>");
+   		  //2.2创建多个td对象
+   		  var tds=doCreateTds(records[i]);
+   		  //2.3将td追加到tr中
+   		  tr.append(tds);
+   		  //2.4将tr追加到tbody中
+   		  tBody.append(tr);
+   	   };
+   	   //储存到dom上
+   		$("#butout").data("goodsIds",goodsIds);
+      }
+  	  //追加商品总金额到页面中
+      function doCreateGoodsMoney(data){
+    	//获取设置总金额的位置
+  		  var strong = $("#strongId");
+  		  strong.empty();
+    	  var span="<span>￥<span>"+data+""
+    	  strong.append(span);
+    	};
+  	  function doCreateTds(data){
+  	    var tds="<td><input type='checkbox' class='cBox' name='cItem' value='"+data.goodsId+"'></td>"+
+  		   	 "<td>"+data.main_img+"</td>"+
+  		     "<td>"+data.descript+"</td>"+
+  		     "<td><input id='product-quantity' type='text' value='"+data.num+"' class='form-control input-sm'></td>"+
+  		     "<td>"+data.price+"</td>"+
+  		     "<td>"+data.total+"</td>"+
+  		     "<td><button type='button' class='btn btn-default btn-delete' value='"+data.goodsId+"'>删除</button></td>";	     
+           return tds;
+     }
     </script>
-    <!-- END PAGE LEVEL JAVASCRIPTS -->
-</body>
-<!-- END BODY -->
-</html>
+ 

@@ -8,17 +8,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.st.springstore.common.vo.JsonResult;
-import com.st.springstore.user.dao.UserDao;
-import com.st.springstore.user.pojo.User;
 import com.st.springstore.user.service.UserService;
-import com.st.springstore.user.serviceImpl.UserServiceImpl;
 import com.st.springstore.user.vo.RegisterUser;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
-	@Autowired
-	private UserDao userDao;
 	
 	@Autowired
 	private UserService userService;
@@ -55,9 +50,9 @@ public class UserController {
 	/**注册功能*/
 	@RequestMapping("doRegister")
 	public JsonResult doRegister(
-			RegisterUser regUser) {
+			RegisterUser registerUser) {
 		
-		userService.userRegister(regUser);
+		userService.userRegister(registerUser);
 		return new JsonResult("注册成功！");
 
 	}

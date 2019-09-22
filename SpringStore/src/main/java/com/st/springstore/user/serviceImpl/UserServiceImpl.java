@@ -58,26 +58,26 @@ public class UserServiceImpl implements UserService{
 	}
 	/**注册新用户*/
 	@Override
-	public int userRegister(RegisterUser regUser) {
+	public int userRegister(RegisterUser registerUser) {
 		//1、校验
 		//从数据库中查询注册用户名对应的用户判断是否存在
-		User sUser = userDao.findUserByUserName(regUser.getUsername());
+		User sUser = userDao.findUserByUserName(registerUser.getUsername());
 		if(StringUtils.isEmpty(sUser) )
 			throw new IllegalArgumentException("用户已存在，请重新输入用户名");
-    	if(StringUtils.isEmpty(regUser.getUsername()))
+    	if(StringUtils.isEmpty(registerUser.getUsername()))
     		throw new IllegalArgumentException("用户名不能为空！");
-    	if(regUser.getPassword() == null &&"".equals(regUser.getPassword()))
+    	if(registerUser.getPassword() == null &&"".equals(registerUser.getPassword()))
     		throw new IllegalArgumentException("密码不能为空！");
-    	if(!regUser.getPassword().equals(regUser.getPasswordConfirm()) )
+    	if(!registerUser.getPassword().equals(registerUser.getPasswordConfirm()) )
     		throw new IllegalArgumentException("两次密码不一致！！");
     	if(
-    			StringUtils.isEmpty(regUser.getMobile())||
-    			StringUtils.isEmpty(regUser.getPasswordConfirm())||
-    			StringUtils.isEmpty(regUser.getEmail())||				
-    			StringUtils.isEmpty(regUser.getCity())||
-    			StringUtils.isEmpty(regUser.getCountry())||
-    			StringUtils.isEmpty(regUser.getPostCode())||			
-    			StringUtils.isEmpty(regUser.getRegionState())				
+    			StringUtils.isEmpty(registerUser.getMobile())||
+    			StringUtils.isEmpty(registerUser.getPasswordConfirm())||
+    			StringUtils.isEmpty(registerUser.getEmail())||				
+    			StringUtils.isEmpty(registerUser.getCity())||
+    			StringUtils.isEmpty(registerUser.getCountry())||
+    			StringUtils.isEmpty(registerUser.getPostCode())||			
+    			StringUtils.isEmpty(registerUser.getRegionState())				
     	)
     		throw new IllegalArgumentException("请填写注册信息，星号（*）部分为必填!");
 		//2、保存自身信息
@@ -85,14 +85,14 @@ public class UserServiceImpl implements UserService{
     	String salt = UUID.randomUUID().toString();
     	//2.2、给密码加密
     	SimpleHash sh = 
-    	new SimpleHash("MD5", regUser.getPassword(), salt, 1);
+    	new SimpleHash("MD5", registerUser.getPassword(), salt, 1);
 		//2.3、将注册表中的数据赋予user对象
     	User user=new User();
-		user.setUsername(regUser.getUsername());
+		user.setUsername(registerUser.getUsername());
 		user.setPassword(sh.toHex());
 		user.setSalt(salt);
-		user.setEmail(regUser.getEmail());
-		user.setMobile(regUser.getMobile());
+		user.setEmail(registerUser.getEmail());
+		user.setMobile(registerUser.getMobile());
 		//2.4、保存到数据库中
 		userDao.userRegister(user);
 		return 1;//1表示注册成功

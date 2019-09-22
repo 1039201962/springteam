@@ -24,4 +24,6 @@ public class Goods implements Serializable{
 	private int sale_num;
 	/** 是否上架 */
 	private int onSale;
+	/**分类信息ID*/
+	private int categoryId;
 }

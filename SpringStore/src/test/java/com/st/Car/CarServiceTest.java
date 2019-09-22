@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.st.springstore.car.service.CarService;
 import com.st.springstore.common.vo.CarGoodsVo;
+import com.st.springstore.common.vo.PageObject;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class CarServiceTest {
@@ -38,6 +39,24 @@ public class CarServiceTest {
 	public void test3CarService() {
 		carService.delectCar(1,1);
 		
+	}
+	@Test
+	public void test4CarService() {
+		double selectCarMoney = carService.SelectCarMoney(1, 1);
+		System.out.println(selectCarMoney);
+	}
+	@Test
+	public void test5CarService() {
+		carService.delectCar(1,1);
+	}
+	@Test
+	public void test6CarService() {
+		PageObject<CarGoodsVo> PageObjects = carService.findPageObjects(1, 1);
+		System.out.println(PageObjects.getPageCount());
+		System.out.println(PageObjects.getPageCurrent());
+		System.out.println(PageObjects.getPageSize());
+		System.out.println(PageObjects.getRecords());
+		System.out.println(PageObjects.getRowCount());		
 	}
 
 }

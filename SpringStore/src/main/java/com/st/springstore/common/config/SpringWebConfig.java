@@ -21,6 +21,7 @@ public class SpringWebConfig {
 		//3.进行过滤器配置
 		//配置过滤器的生命周期管理(可选)由ServletContext对象负责
 		//fBean.setEnabled(true);//默认值就是true
+	
 		fBean.addUrlPatterns("/*");
 		//....
 		return fBean;

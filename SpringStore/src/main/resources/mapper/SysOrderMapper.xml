@@ -41,8 +41,7 @@
 	
   <!--根据id删除订单  -->
   <update id="deleteSysOrder">
-		update order_list
-		set valid=1
+		delete from order_list
 		where id in
 		<foreach collection="array" open="(" close=")" separator=","
 			item="orderId">
@@ -84,7 +83,7 @@
          <include refid="queryWhereId"/>
    </select>
    <!-- 查询当前页记录，resultType的值为一行记录要映射的结果类型 -->
-   <select id="findPageObjects"
+   <select id="findPageObject"
            resultType="com.st.springsys.sysorder.pojo.SysOrder">
            select *
            <include refid="queryWhereId"/>
