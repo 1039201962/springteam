@@ -20,7 +20,7 @@ public class GlobalExceptionHandler {
 			RuntimeException e) {
 		log.error(e.getMessage());
 		e.printStackTrace();
-
+		System.out.println("-------------------");
 		return new JsonResult(e);
 	}
 	/**shiro安全框架全局异常处理*/

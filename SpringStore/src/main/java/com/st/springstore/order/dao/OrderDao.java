@@ -1,6 +1,6 @@
 package com.st.springstore.order.dao;
+import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -46,5 +46,10 @@ public interface OrderDao {
 	 * @param userId
 	 */
 	List<OrderVo> findOrderByUserId(Integer userId);
+	/* 关闭订单 */
+	int CancelOrder(Integer orderIds);
+	
+	/** 查询订单创建时间 */
+	Date findOrderCreateTimeByOrderNum(Integer orderIds);
 	
 }

@@ -10,12 +10,10 @@ import org.springframework.stereotype.Service;
 import com.st.springstore.car.dao.CarDao;
 import com.st.springstore.car.pojo.Car;
 import com.st.springstore.common.exception.ServiceException;
-import com.st.springstore.common.vo.JsonResult;
 import com.st.springstore.common.vo.OrderVo;
 import com.st.springstore.common.vo.ReceivingVo;
 import com.st.springstore.goods.dao.GoodsDao;
 import com.st.springstore.goods.pojo.Goods;
-import com.st.springstore.goods.serviceImpl.GoodsServiceImpl;
 import com.st.springstore.order.dao.OrderDao;
 import com.st.springstore.order.pojo.Order;
 import com.st.springstore.order.service.OrderService;
@@ -50,7 +48,7 @@ public class OrderServiceImpl implements OrderService{
 		List<ReceivingVo> list = orderDao.selectInfo(userId);
 		return list;
 	}
-	
+
 	/**
 	 * 生成新订单,返回一个订单的id
 	 */
@@ -127,7 +125,9 @@ public class OrderServiceImpl implements OrderService{
 	@Override
 	public int deleteOrder(Integer... orderIds) {
 		int rows = orderDao.deleteOrder(orderIds);
+		if(rows==0) throw new ServiceException("记录已经被删除了");
 		return rows;
+
 	}
 
 	/**
@@ -149,8 +149,28 @@ public class OrderServiceImpl implements OrderService{
 			throw new ServiceException("没有对应的用户信息");
 		List<OrderVo> orderVos = orderDao.findOrderByUserId(userId);
 		if(orderVos==null) throw new ServiceException("没有对应订单信息");
-		/** */
+
+		for (OrderVo orderVo : orderVos) {
+			Date time = orderVo.getCreatedTime();
+			Date now = new Date();
+			long ms =now.getTime()-time.getTime();
+			System.out.println("ms:"+ms);
+			if((ms>1800000 || ms <0)&&(orderVo.getPayStatus()==0)) {
+				int orderNum = orderVo.getOrderNum();
+				orderDao.CancelOrder(orderNum);
+				orderVo.setPayStatus(2);
+
+
+			}
+		}
+
 		return orderVos;
+	}
+
+	@Override
+	public void CancelOrder(Integer orderNum) {
+		int rows = orderDao.CancelOrder(orderNum);
+		if(rows==0) throw new ServiceException("请稍后再试");	
 	}
 
 }

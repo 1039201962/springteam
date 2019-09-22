@@ -50,6 +50,7 @@ public class OrderController {
 	@RequestMapping("doDeleteOrder")
 	@ResponseBody
 	public JsonResult doDeleteOrder(Integer...orders) {
+		System.out.println("doDeleteOrder");
 		int deleteOrder= orderService.deleteOrder(orders);
 		return new JsonResult("delete ok");
 	}
@@ -84,5 +85,18 @@ public class OrderController {
 	public JsonResult doFindOrderInfoByOrderId(Integer userId,Integer orderId) {
 		 Order order = orderService.findOrder(userId,orderId);
 		return new JsonResult(order);
+	}
+	
+	/**
+	 **取消订单
+	 * @param userId
+	 * @param orderId
+	 * @return
+	 */
+	@RequestMapping("doCancelOrder")
+	@ResponseBody
+	public JsonResult doCancelOrder(Integer orderId) {
+		orderService.CancelOrder(orderId);
+		return new JsonResult("ok");
 	}
 }

@@ -39,6 +39,9 @@ public interface OrderService {
 	 * @return
 	 */
 	List<OrderVo> findAllOrder(Integer userId);
+	
+	/** 取消订单 */
+	void CancelOrder(Integer orderNum);
 
 	
 	
