@@ -1,8 +1,6 @@
 package com.st.springstore.car.controller;
 
 import java.util.List;
-
-import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,8 +30,11 @@ public class CarController {
    }
    @RequestMapping("/doSelectCarMoney")/**查询用户选中的商品总金额*/
    @ResponseBody
-   public JsonResult doSelectCarMoney(Integer userId,Integer...goodsIds) {
+   public JsonResult doSelectCarMoney(Integer...goodsIds){
+	   Integer userId=1;
 	   double totalMoney = carService.SelectCarMoney(userId,goodsIds);
+	   System.out.println(totalMoney);
+	   
 	   return new JsonResult(totalMoney);
    }
    /**分页查询*/
@@ -56,7 +57,6 @@ public class CarController {
    @RequestMapping("/doDeleteCar")/**删除购物车*/
    @ResponseBody
    public JsonResult doDelectCar(Integer...goodsIds) {
-	   System.out.println(goodsIds);
 	   Integer userId=1;
 	   carService.delectCar(userId,goodsIds);
 	   return new JsonResult("delete...OK");

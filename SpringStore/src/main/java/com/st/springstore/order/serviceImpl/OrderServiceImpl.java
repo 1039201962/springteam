@@ -36,8 +36,8 @@ public class OrderServiceImpl implements OrderService{
 	 */
 	public static Long  orderId() {
 		int r1 = (int) (Math.random() * (9) + 1);//产生2个0-9的随机数
-		SimpleDateFormat yyyyMMddHHmmss = new SimpleDateFormat("yyyyMMddHHmmss");
-		String format = yyyyMMddHHmmss.format(new Date());
+		SimpleDateFormat MMddHHmmss = new SimpleDateFormat("MMddHHmmss");
+		String format = MMddHHmmss.format(new Date());
 		return Long.parseLong(format + r1);
 
 	}

@@ -1,8 +1,6 @@
 package com.st.springstore.car.service;
 
 import java.util.List;
-
-import com.st.springstore.car.pojo.Car;
 import com.st.springstore.common.vo.CarGoodsVo;
 import com.st.springstore.common.vo.PageObject;
 
@@ -21,7 +19,7 @@ public interface CarService {
 	/**删除购物车中对应的商品*/
 	int delectCar(Integer userId, Integer...goodsIds);
 	/**查询用户选中的商品总金额*/
-	double SelectCarMoney(Integer userId, Integer...goodsId);
+	double SelectCarMoney(Integer userId, Integer...goodsIds);
 	
 	/**
              * 获取当前页的分析信息

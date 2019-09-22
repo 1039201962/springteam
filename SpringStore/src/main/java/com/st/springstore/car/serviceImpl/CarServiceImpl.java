@@ -112,12 +112,10 @@ public class CarServiceImpl implements CarService{
 	}
 	/**查询用户选中的商品总金额*/
 	@Override
-	public double SelectCarMoney(Integer userId, Integer...goodsIds) {
-		if(userId==null)
-			throw new ServiceException("请先登录");
+	public double SelectCarMoney(Integer userId, Integer...goodsIds) {		
+		if(goodsIds==null||goodsIds.length==0)
+			throw new ServiceException("请选择商品");
 		double totalMoney=0;
-		if(goodsIds==null)
-			return totalMoney;
 		List<Car> list = carDao.findByGoodsId(userId,goodsIds);
 		for (Car car : list) {
 			int num = car.getNum();
