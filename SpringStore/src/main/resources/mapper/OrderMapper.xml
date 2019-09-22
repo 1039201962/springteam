@@ -26,7 +26,7 @@
 		pay_status,amount,valid,addr,mobile,name
 		from order_list
 		where
-		id=#{orderId} and valid=0 and userId=#{userId}
+		order_num=#{orderId} and valid=0 
 	</select>
 	<!-- 删除订单 -->
 	<update id="deleteOrder">
@@ -56,7 +56,7 @@
 
 	<!-- 根据id查询订单信息 -->
 	<select id="findOrderByUserId" resultType="com.st.springstore.common.vo.OrderVo" >
-		select o.order_num as orderNum,o.createdTime,o.name,o.valid,o.num,g.main_img as img,g.title,o.amount
+		select o.order_num as orderNum,o.createdTime,o.name,o.pay_status as payStatus,o.valid,o.num,g.main_img as img,g.title,o.amount
 		from goods g,order_list o
 		where o.goodsId=g.goodsId and o.userId=#{userId} and valid=0 order by o.createdTime desc
 	</select>

@@ -12,7 +12,7 @@ public class OrderVo {
 	/** 收货人姓名 */
 	private String name;
 	/** 支付状态 */
-	private int pay_status;
+	private int payStatus;
 	/** 商品描述*/
 	private String title;
 	/** 订单总价 */

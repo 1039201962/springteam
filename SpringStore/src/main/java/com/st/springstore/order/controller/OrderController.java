@@ -78,4 +78,11 @@ public class OrderController {
 		List<OrderVo> list = orderService.findAllOrder(userId);
 		return new JsonResult(list);
 	}
+	
+	@RequestMapping("doFindOrderInfoByOrderId")
+	@ResponseBody
+	public JsonResult doFindOrderInfoByOrderId(Integer userId,Integer orderId) {
+		 Order order = orderService.findOrder(userId,orderId);
+		return new JsonResult(order);
+	}
 }

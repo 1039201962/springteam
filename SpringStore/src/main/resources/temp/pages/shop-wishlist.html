@@ -82,7 +82,7 @@
                 <!-- 该区域展示订单 -->
                 <table>
                 	<thead>
-						<tr>
+						<tr id="table_head">
 							<th>订单编号</th>
 							<th>订单时间</th>
 							<th>商品名称</th>
@@ -201,6 +201,7 @@ Nostrud duis molestie at dolore.</p>
             Layout.initSliderRange();
             $("#header").load("/header");
             $("#footer").load("/footer");
+            load();
         });
 
         
@@ -211,7 +212,6 @@ Nostrud duis molestie at dolore.</p>
         }
     </script>
     <script>
-        $(load());
 
         //就绪触发事件
         function load() {
@@ -241,28 +241,74 @@ Nostrud duis molestie at dolore.</p>
             var tbody = $("#tbodyId");
             for(var i in data){ //order为一个orderVo对象          
             	console.log("数据"+i+data[i]);
-                tbody.data("tdata",data[i]);
-                var trs =doCreateTrs(data[i]);
-                tbody.append(trs);    
+                var tr =doCreateTrs(data[i]); 
+                $(tr).data("ordernum",data[i].orderNum);
+                console.log("tr");
+                console.log(tr.data("ordernum"));
+                tbody.append(tr);   
+                changeFormColor();
             }
+            
+            $("#tbodyId").on("click",".see",doShowDetails);
+        }
+        
+        /* 查看订单详情的函数 */
+        function doShowDetails(){
+        	 //var orderNum= $(this).parent("tr").find("td:first").html();
+        	  var orderNum=$(this).parent("tr").data("ordernum");
+        	  alert(orderNum);
+        	
+        }
+        function changeFormColor(){
+        	$(".trStatus").each(function(){
+        		if($(this).html() == "待支付"){
+        			$(this).parent("tr").addClass("yellow-tr");
+        		}if($(this).html() == "已取消"){
+        			$(this).parent("tr").addClass("grey-tr");
+        		}else{
+        			$(this).parent("tr").addClass("green-tr");
+        		}
+        	})
         }
         function doCreateTrs(order) {
         	console.log("doCreateTrs()");
+        	var choose = "支付";
         	var status="待支付";
         	if(order.payStatus==1){
         		status="已支付";
+        		choose="取消";
         	}if(order.payStatus==2){
-        		status="已超时";
+        		status="已取消";
+        		choose="删除";
         	}
-            var trs="<tr><td>"+order.orderNum+"</td><td>"+order.createdTime
+        	
+        	var tr=$("<tr></tr>");            
+            var td="<td>"+order.orderNum+"</td><td>"+order.createdTime
             +"</td><td>"+order.title+"</td><td>"+order.num+"</td><td>"+order.amount+
-            "</td><td>"+order.name+"</td><td>"+status+"</td><td><input type='button' id="+order.orderNum+" value='删除' ><input type='button' id="+order.orderNum+" value='支付' ></td></tr>"
-            return trs;
-            
+            "</td><td>"+order.name+"</td><td class='trStatus'>"+status+
+            "</td><td><input type='button' class='see' value='查看' ><input type='button' id="+order.orderNum+" value="+choose+"></td>"
+           	tr.append(td);           
+            return tr;            
         }
+        
+       
+        
+        
     </script>
     
-    <style type="text/css">
+<style>
+    /* #90EE90 浅绿色 */
+    /* #F0E68C 卡其布 */
+    .green-tr{
+    	background-color:#90EE90;
+    }
+    .yellow-tr{
+    	background-color:#F0E68C;
+    }
+    .grey-tr{
+   		background-color:#BEBEBE;
+    }
+
 table{
 border: 1px solid #000;
 width:100%;
@@ -276,7 +322,7 @@ border: 1px solid 	#E1FFFF;
 border-color: #E1FFFF;
 }
 table tr td:nth-of-type(1){
-	width:120px;
+	width:100px;
 }
 table tr td:nth-of-type(2){
 	width:150px;
@@ -288,20 +334,16 @@ table tr td:nth-of-type(4){
 	width:100px;
 }
 table tr td:nth-of-type(5){
-	width:100px;
-	
+	width:100px;	
 }
 table tr td:nth-of-type(6){
-	width:100px;
-	
+	width:100px;	
 }
 table tr td:nth-of-type(7){
-	width:100px;
-	
+	width:100px;	
 }
 table tr td:nth-of-type(8){
-	width:150px;
-	
+	width:150px;	
 }
 table{
 	text-align:center;

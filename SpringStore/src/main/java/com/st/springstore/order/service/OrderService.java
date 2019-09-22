@@ -39,6 +39,8 @@ public interface OrderService {
 	 * @return
 	 */
 	List<OrderVo> findAllOrder(Integer userId);
+
+	
 	
 	
 }

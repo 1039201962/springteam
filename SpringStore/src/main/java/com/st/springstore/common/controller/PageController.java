@@ -29,4 +29,13 @@ public class PageController {
 	public String doJumpGoodsList() {
 		return "shop-product-list";
 	}
+	/**
+	 **查看订单详情信息的页面
+	 */
+	@RequestMapping("/seeOrderInfo")
+	public String seeOrderInfo(){
+		
+		
+		return "order_info";
+	}
 }
